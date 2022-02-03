@@ -10,26 +10,22 @@ import UserBlock from "../common/UserBlock";
 import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import UserBlockStlyed from "../styled/commonStyled/UserBlockStyled";
 import { useSelector, useDispatch } from "react-redux";
+import Tag from "../common/Tag";
 
 const SideContent = ({ isOpened }) => {
   const postDetail = useSelector((state) => state.post.postDetail);
-
   return (
     <SideWrapper>
       <div>
         {isOpened && (
           <UserBlockStlyed>
-            <UserProfileStyled
-              src="../../public/logo192.png"
-              width="32px"
-              height="32px"
-            />
+            <UserProfileStyled src="" width="32px" height="32px" />
             <p>{postDetail.authorName}</p>
           </UserBlockStlyed>
         )}
       </div>
       <VideoDescription />
-      <div>{postDetail.tags}</div>
+      <Tag tag={postDetail.tags}>{postDetail.tags}</Tag>
       <ContentInfo />
       <CommentList />
       <CommentInput />

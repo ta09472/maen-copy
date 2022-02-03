@@ -5,16 +5,18 @@ export const SET_INPUT = "SET_INPUT";
 export const RETURN_NULL = "RETURN_NULL";
 // action
 
-export const setInput = (input = "") => async (dispatch) => {
+export const setInput = (input) => async (dispatch) => {
   await dispatch({ type: SET_INPUT, payload: input });
 };
 
 export const getSearch = (keyword) => async (dispatch) => {
-  const response = await axios.get(`api/v1/posts/${keyword}/search/`);
-  if (response.data.length != 0) {
-    dispatch({ type: GET_SEARCH, payload: response.data, isEmpty: false });
-  } else {
-    dispatch({ type: GET_SEARCH, payload: response.data, isEmpty: true });
+  if (keyword.length !== 0) {
+    const response = await axios.get(`api/v1/posts/${keyword}/search/recent`);
+    if (response.data.length !== 0) {
+      dispatch({ type: GET_SEARCH, payload: response.data, isEmpty: false });
+    } else {
+      dispatch({ type: GET_SEARCH, payload: response.data, isEmpty: true });
+    }
   }
 };
 

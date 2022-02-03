@@ -9,7 +9,6 @@ import ContentWrapper from "../styled/mainStyled/ContentWrapper";
 import HomeWrapper from "../styled/mainStyled/HomeWrapper";
 import Upload from "../upload/Upload";
 import { Route, Routes, Link } from "react-router-dom";
-import axios from "axios";
 import Post from "./Post";
 
 const Main = () => {

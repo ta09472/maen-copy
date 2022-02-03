@@ -11,7 +11,6 @@ import Upload from "./components/upload/Upload";
 import VideoModal from "./components/videoModal/VideoModal";
 import { Route, Routes } from "react-router-dom";
 import UploadTest from "./components/UploadTest";
-import Test from "./components/Test";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
@@ -25,12 +24,11 @@ function App() {
             <Header></Header>
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route path="channel" element={<Channel />} />
-              <Route path="upload" element={<Upload />} />
-              <Route path="recent" element={<Recent />} />
-              <Route path="search" element={<SearchResult />} />
-              <Route path="test" element={<Test />} />
-              <Route path="uploadtest" element={<UploadTest />} />
+              <Route path="/channel" element={<Channel />} />
+              <Route path="/upload" element={<Upload />} />
+              <Route path="/recent" element={<Recent />} />
+              <Route path="/search" element={<SearchResult />} />
+              <Route path="/uploadtest" element={<UploadTest />} />
             </Routes>
           </GlobalWrapper>
         </Provider>

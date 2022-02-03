@@ -19,7 +19,7 @@ const Search = () => {
 
   const handleClick = async (e) => {
     await dispatch(setInput(userInput));
-    navigate("search");
+    navigate("/search");
   };
 
   const handlePress = (e) => {

@@ -45,7 +45,7 @@ const UploadTest = () => {
     formData.append("tags", inputs.tags);
     formData.append("description", inputs.description);
 
-    fetch("/api/v1/posts", {
+    fetch("/api/v1/posts/", {
       method: "POST",
       body: formData,
     })

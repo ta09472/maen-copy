@@ -13,10 +13,12 @@ import { fetchDetailPost } from "../../redux/module/post";
 import UserBlockStlyed from "../styled/commonStyled/UserBlockStyled";
 import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import ThumbnailWrapper from "../styled/mainStyled/ThumbnailWrapper";
-
+import Tag from "../common/Tag";
 import { fetchComments } from "../../redux/module/comment";
+
 const Post = ({ post }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [postTag, setPostTag] = useState(post);
   const postDetail = useSelector((state) => state.post.postDetail);
   const dispatch = useDispatch();
 
@@ -27,6 +29,7 @@ const Post = ({ post }) => {
     dispatch(fetchComments(`${postId}`));
     document.body.style.overflow = "auto";
   };
+  /* 나중에 리스트로 태그 컴포넌트 만들어야함 */
   return (
     <>
       <PostStyled onClick={toggleModal}>
@@ -41,6 +44,7 @@ const Post = ({ post }) => {
         </UserBlockStlyed>
         <MdFavorite /> :{post.postsLike}
         <MdPlayArrow /> : {post.views}
+        <Tag tag={post.tags}>{post.tags} </Tag>
       </PostStyled>
 
       <VideoModal

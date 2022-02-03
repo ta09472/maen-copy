@@ -6,11 +6,7 @@ import UserBlockStlyed from "../styled/commonStyled/UserBlockStyled";
 const UserBlock = () => {
   return (
     <UserBlockStlyed>
-      <UserProfileStyled
-        src="../../public/logo192.png"
-        width="32px"
-        height="32px"
-      />
+      <UserProfileStyled src="" width="32px" height="32px" />
       <p>username</p>
     </UserBlockStlyed>
   );

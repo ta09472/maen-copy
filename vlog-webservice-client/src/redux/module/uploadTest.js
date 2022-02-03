@@ -6,7 +6,7 @@ export const FETCH_POST = "FETCH_POST";
 // action
 
 export const fetchPost = () => async (dispatch) => {
-  const response = await axios.get("/api/v1/posts/");
+  const response = await axios.get("/api/v1/posts/recent");
   dispatch({ type: FETCH_POST, payload: response.data });
 };
 

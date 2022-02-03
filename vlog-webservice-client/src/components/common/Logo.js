@@ -1,10 +1,10 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Logo = () => {
   return (
     <>
       <h1>
-        <a href="./">MAEN</a>
+        <Link to={"/"}>MAEN</Link>
       </h1>
     </>
   );

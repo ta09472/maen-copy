@@ -19,7 +19,7 @@ const UploadTest = () => {
       <UploadWrapper>
         <FormStyled
           method="post"
-          action="http://localhost:8080/api/v1/posts"
+          action="http://localhost:8080/api/v1/posts/"
           encType="multipart/form-data"
         >
           <PostFormStyled>
