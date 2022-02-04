@@ -11,9 +11,11 @@ import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import UserBlockStlyed from "../styled/commonStyled/UserBlockStyled";
 import { useSelector, useDispatch } from "react-redux";
 import Tag from "../common/Tag";
+import TagListWrapper from "../styled/commonStyled/TagListWrapper";
 
 const SideContent = ({ isOpened }) => {
   const postDetail = useSelector((state) => state.post.postDetail);
+  console.log(postDetail);
   return (
     <SideWrapper>
       <div>
@@ -25,7 +27,7 @@ const SideContent = ({ isOpened }) => {
         )}
       </div>
       <VideoDescription />
-      <Tag tag={postDetail.tags}>{postDetail.tags}</Tag>
+      <TagListWrapper></TagListWrapper>
       <ContentInfo />
       <CommentList />
       <CommentInput />

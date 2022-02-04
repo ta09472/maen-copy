@@ -15,6 +15,7 @@ import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import ThumbnailWrapper from "../styled/mainStyled/ThumbnailWrapper";
 import Tag from "../common/Tag";
 import { fetchComments } from "../../redux/module/comment";
+import TagListWrapper from "../styled/commonStyled/TagListWrapper";
 
 const Post = ({ post }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,7 +30,13 @@ const Post = ({ post }) => {
     dispatch(fetchComments(`${postId}`));
     document.body.style.overflow = "auto";
   };
-  /* 나중에 리스트로 태그 컴포넌트 만들어야함 */
+
+  const tagList = post.tags.map((tag, index) => (
+    <Tag key={index} tag={tag}>
+      {tag}
+    </Tag>
+  ));
+
   return (
     <>
       <PostStyled onClick={toggleModal}>
@@ -44,7 +51,7 @@ const Post = ({ post }) => {
         </UserBlockStlyed>
         <MdFavorite /> :{post.postsLike}
         <MdPlayArrow /> : {post.views}
-        <Tag tag={post.tags}>{post.tags} </Tag>
+        <TagListWrapper>{tagList}</TagListWrapper>
       </PostStyled>
 
       <VideoModal

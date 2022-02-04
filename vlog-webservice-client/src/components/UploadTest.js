@@ -12,8 +12,6 @@ import FormStyled from "./styled/uploadStyled/FormStyled";
 import { useNavigate } from "react-router-dom";
 
 const UploadTest = () => {
-  const navigate = useNavigate();
-
   return (
     <>
       <UploadWrapper>
@@ -30,13 +28,13 @@ const UploadTest = () => {
           </PostFormStyled>
           <InputWrapper>
             <input type="text" name="userId" placeholder="userid" />
+            태그 구분은 #로 합니다.
             <CaptionInput type="text" name="tags" placeholder="Input Tags" />
             <DescriptionInput
               type="text"
               name="description"
               placeholder="Description"
             />
-
             <ButtonWrapper>
               <UploadButtonStyled>upload</UploadButtonStyled>
             </ButtonWrapper>

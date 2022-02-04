@@ -13,6 +13,25 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const UploadTest = () => {
+  /* tag 분리 하는 로직 */
+  const [tagList, setTagList] = useState([]);
+  const [tag, setTag] = useState("");
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    if (e.keyCode == 32) {
+      setTag("");
+    }
+    setTag(e.target.value);
+  };
+  const handleKeyDown = (e) => {
+    if (e.keyCode == 32) {
+      setTagList([...tagList, tag]);
+
+      console.log(tagList);
+    }
+  };
+
   const [inputs, setInputs] = useState({
     userId: "",
     tags: "",
@@ -93,6 +112,8 @@ const UploadTest = () => {
               placeholder="Input Tags"
               value={tags}
               onChange={onChange}
+              data-tag={tag}
+              onKeyDown={handleKeyDown}
             />
             <DescriptionInput
               type="text"

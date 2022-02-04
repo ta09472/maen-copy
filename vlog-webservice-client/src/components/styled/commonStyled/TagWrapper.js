@@ -5,7 +5,8 @@ const TagWrapper = styled.a`
   color: #2d3436;
   font-size: 14px;
   background-color: #b2bec3;
-  padding: 1px 3px;
+  padding: 2px 5px;
+  margin-right: 6px;
 `;
 
 export default TagWrapper;
