@@ -8,7 +8,7 @@ const PostStyled = styled.div`
   transition: transform 700ms;
   &:hover {
     transition: 500ms;
-    transform: translateY(-16px);
+    transform: translateY(-5px);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
       0 6px 20px 12px rgba(0, 0, 0, 0.19);
     opacity: 0.7;

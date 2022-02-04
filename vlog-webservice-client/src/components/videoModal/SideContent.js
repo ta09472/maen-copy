@@ -13,9 +13,15 @@ import { useSelector, useDispatch } from "react-redux";
 import Tag from "../common/Tag";
 import TagListWrapper from "../styled/commonStyled/TagListWrapper";
 
-const SideContent = ({ isOpened }) => {
+const SideContent = ({ isOpened, tags }) => {
   const postDetail = useSelector((state) => state.post.postDetail);
-  console.log(postDetail);
+
+  const tagList = tags.map((tag, index) => (
+    <Tag key={index} tag={tag}>
+      {tag}
+    </Tag>
+  ));
+
   return (
     <SideWrapper>
       <div>
@@ -27,7 +33,7 @@ const SideContent = ({ isOpened }) => {
         )}
       </div>
       <VideoDescription />
-      <TagListWrapper></TagListWrapper>
+      <TagListWrapper>{tagList}</TagListWrapper>
       <ContentInfo />
       <CommentList />
       <CommentInput />

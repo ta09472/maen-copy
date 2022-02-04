@@ -10,13 +10,12 @@ import VideoContent from "../videoModal/VideoContent";
 import SideContent from "../videoModal/SideContent";
 import axios from "axios";
 
-const VideoModal = ({ isOpened, children, onClose, videoSrc }) => {
+const VideoModal = ({ isOpened, children, onClose, videoSrc, tags }) => {
   if (!isOpened) {
     return null;
   }
   document.body.style.overflow = "hidden";
   const link = videoSrc.slice(0, -3);
-
   return createPortal(
     <ModalWrapper>
       <OverlayStyled onClick={onClose}>
@@ -35,7 +34,7 @@ const VideoModal = ({ isOpened, children, onClose, videoSrc }) => {
             autoPlay
           />
         </VideoContentWrapper>
-        <SideContent isOpened={isOpened} />
+        <SideContent isOpened={isOpened} tags={tags} />
       </ModalStyled>
     </ModalWrapper>,
     document.getElementById("modal")

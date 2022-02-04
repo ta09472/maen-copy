@@ -58,6 +58,7 @@ const Post = ({ post }) => {
         isOpened={isModalOpen}
         onClose={toggleModal}
         videoSrc={post.thumbnailName}
+        tags={post.tags}
       ></VideoModal>
     </>
   );
