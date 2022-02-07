@@ -5,7 +5,7 @@ const SortStyled = styled.div`
   justify-content: center;
   align-items: center;
 
-  min-height: 3em;
+  margin-top: 1em;
   width: 100%;
 `;
 

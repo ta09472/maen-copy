@@ -3,6 +3,7 @@ import SearchTagStyled from "../styled/searchStyled/SearchTagStyled";
 import Content from "../main/Content";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearch } from "../../redux/module/search";
+import PostWrapperStyled from "../styled/mainStyled/PostWrapperStyled";
 import Post from "../main/Post";
 
 const SearchTag = () => {
@@ -20,8 +21,10 @@ const SearchTag = () => {
 
   return (
     <SearchTagStyled>
-      <p>Posts</p>
-      {resultList}
+      <PostWrapperStyled>
+        <p>Posts</p>
+        {resultList}
+      </PostWrapperStyled>
     </SearchTagStyled>
   );
 };

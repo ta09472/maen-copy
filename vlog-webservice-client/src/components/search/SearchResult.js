@@ -12,7 +12,7 @@ import SearchTag from "./SearchTag";
 import Content from "../main/Content";
 import { useSelector, useDispatch } from "react-redux";
 import { getSearch, setInput } from "../../redux/module/search";
-
+import SortStyled from "../styled/mainStyled/SortStyled";
 const SearchResult = () => {
   const dispatch = useDispatch();
   const keyword = useSelector((state) => state.search.input);
@@ -26,11 +26,13 @@ const SearchResult = () => {
     <HomeWrapper>
       <SideNav />
       <ContentWrapper>
-        {isEmpty ? (
-          <p>"{keyword}"에 대한 검색결과가 없습니다.</p>
-        ) : (
-          <p>"{keyword}"에 대한 검색결과입니다.</p>
-        )}
+        <SortStyled>
+          {isEmpty ? (
+            <p>"{keyword}"에 대한 검색결과가 없습니다.</p>
+          ) : (
+            <p>"{keyword}"에 대한 검색결과입니다.</p>
+          )}
+        </SortStyled>
         <SearchUser />
         <SearchTag />
       </ContentWrapper>

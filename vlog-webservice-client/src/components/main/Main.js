@@ -10,8 +10,10 @@ import HomeWrapper from "../styled/mainStyled/HomeWrapper";
 import Upload from "../upload/Upload";
 import { Route, Routes, Link } from "react-router-dom";
 import Post from "./Post";
-
+import axios from "axios";
 const Main = () => {
+  const [lastPostId, setLastPostId] = useState("");
+
   return (
     <HomeWrapper>
       <SideNav />
@@ -20,7 +22,6 @@ const Main = () => {
           <Sort />
 
           <Content />
-          <button>click</button>
         </ContentWrapper>
         <UploadButton />
       </MainWrapper>
