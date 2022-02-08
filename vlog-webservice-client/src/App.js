@@ -13,8 +13,12 @@ import { Route, Routes } from "react-router-dom";
 import UploadTest from "./components/UploadTest";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { useMediaQuery } from "react-responsive";
 
 function App() {
+  const isMobile = useMediaQuery({
+    query: "(max-width:768px)",
+  });
   return (
     <>
       <GlobalStyled />

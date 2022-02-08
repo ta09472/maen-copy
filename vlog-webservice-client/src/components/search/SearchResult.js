@@ -20,6 +20,7 @@ const SearchResult = () => {
 
   useEffect(async () => {
     await dispatch(getSearch(keyword));
+    document.body.style.overflow = "auto";
   }, []);
 
   return (

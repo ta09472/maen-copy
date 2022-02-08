@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "../common/Header";
 import UploadButton from "../common/UploadButton";
 import SideNav from "../common/SideNav";
@@ -9,18 +9,14 @@ import ContentWrapper from "../styled/mainStyled/ContentWrapper";
 import HomeWrapper from "../styled/mainStyled/HomeWrapper";
 import Upload from "../upload/Upload";
 import { Route, Routes, Link } from "react-router-dom";
-import Post from "./Post";
-import axios from "axios";
-const Main = () => {
-  const [lastPostId, setLastPostId] = useState("");
 
+const Main = () => {
   return (
     <HomeWrapper>
       <SideNav />
       <MainWrapper>
         <ContentWrapper>
           <Sort />
-
           <Content />
         </ContentWrapper>
         <UploadButton />

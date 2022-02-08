@@ -5,7 +5,6 @@ const ThumbnailWrapper = styled.img`
   height: 70%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background-color: skyblue;
 `;
 
 export default ThumbnailWrapper;
