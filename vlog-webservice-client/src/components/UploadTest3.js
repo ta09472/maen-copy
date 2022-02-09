@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 const UploadTest = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.action);
+    console.log(e);
   };
   return (
     <>

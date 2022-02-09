@@ -31,13 +31,13 @@ const Sort = () => {
   return (
     <SortStyled>
       <NavLink style={navLinkStyled} to="/">
-        <ButtonStyled data-link="popular" onClick={handleClick}>
+        <ButtonStyled data-link="popular">
           <MdTrendingUp />
           인기
         </ButtonStyled>
       </NavLink>
       <NavLink style={navLinkStyled} to="/recent">
-        <ButtonStyled data-link="recent" onClick={handleClick}>
+        <ButtonStyled data-link="recent">
           <MdAvTimer />
           최신
         </ButtonStyled>

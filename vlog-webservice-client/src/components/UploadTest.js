@@ -11,6 +11,7 @@ import PostFormStyled from "./styled/uploadStyled/PostFormStyled";
 import FormStyled from "./styled/uploadStyled/FormStyled";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 const UploadTest = () => {
   /* tag 분리 하는 로직 */
   const [tagList, setTagList] = useState([]);
@@ -35,7 +36,7 @@ const UploadTest = () => {
     userId: "",
     tags: "",
     description: "",
-    file: "",
+    video: "",
   });
 
   const onChange = (e) => {
@@ -54,41 +55,41 @@ const UploadTest = () => {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     const formData = new FormData();
-    formData.append("file", inputs.file);
+    formData.append("video", inputs.video);
     formData.append("userId", inputs.userId);
     formData.append("tags", inputs.tags);
     formData.append("description", inputs.description);
 
     await axios
-      .post("http://localhost:8080/api/v1/posts/", formData)
+      .post("http://localhost:8080/api/v1/posts/", formData, {
+        headers: {
+          encType: "multipart/form-data",
+        },
+      })
       .then((res) => {
         //handle success
-        console.log("성공", res);
+        navigate("/");
       })
-      .catch((res) => {
+      .catch((err) => {
         //handle error
-        console.log(res);
+        navigate("/");
       });
   };
 
   return (
     <>
       <UploadWrapper>
-        <form
-          method="POST"
-          action="http://localhost:8080/api/v1/posts/"
-          onSubmit={handleSubmit}
-        >
+        <form onSubmit={handleSubmit}>
           <FormStyled>
             <PostFormStyled>
               <h3>Upload Your Days</h3>
               <UploaderStyled>
                 <input
                   multiple
-                  encType="multipart/form-data"
                   type="file"
-                  name="file"
+                  name="video"
                   onChange={handleFileChange}
                 />
               </UploaderStyled>

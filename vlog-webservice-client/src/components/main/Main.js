@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../common/Header";
 import UploadButton from "../common/UploadButton";
 import SideNav from "../common/SideNav";
@@ -9,7 +9,6 @@ import ContentWrapper from "../styled/mainStyled/ContentWrapper";
 import HomeWrapper from "../styled/mainStyled/HomeWrapper";
 import Upload from "../upload/Upload";
 import { Route, Routes, Link } from "react-router-dom";
-
 const Main = () => {
   return (
     <HomeWrapper>
