@@ -4,7 +4,8 @@ const MainWrapper = styled.div`
   display: flex;
   flex-direction: row;
   overflow-y: hidden;
-  margin: 1em;
+  margin-top: 1em;
+  min-width: 1380px;
 `;
 
 export default MainWrapper;

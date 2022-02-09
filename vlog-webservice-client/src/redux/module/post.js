@@ -16,7 +16,7 @@ export const fetchPostPopular = () => async (dispatch) => {
   dispatch({ type: FETCH_POST_POPULAR, payload: response.data });
 };
 
-export const toggleModal = (isOpened) => {
+export const toggle = (isOpened) => {
   return { type: TOGGLE_MODAL, isOpened: isOpened };
 };
 
@@ -47,7 +47,7 @@ export default function reducer(state = initialState, action) {
     case TOGGLE_MODAL:
       return {
         ...state,
-        isOpened: !state.isOpened,
+        isOpened: !action.isOpened,
       };
     case FETCH_POST_DETAIL:
       return {

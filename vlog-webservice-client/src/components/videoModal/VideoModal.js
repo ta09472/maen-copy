@@ -14,6 +14,7 @@ const VideoModal = ({ isOpened, children, onClose, videoSrc, tags }) => {
   if (!isOpened) {
     return null;
   }
+
   document.body.style.overflow = "hidden";
   const link = videoSrc.slice(0, -3);
   return createPortal(

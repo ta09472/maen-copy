@@ -4,6 +4,7 @@ import { fetchPost } from "../../redux/module/post";
 import Post from "../main/Post";
 import Loader from "../main/Loader";
 import axios from "axios";
+import { throttle } from "lodash";
 import PostWrapperStyled from "../styled/mainStyled/PostWrapperStyled";
 import TargetStyled from "../styled/mainStyled/TargetStyled";
 
@@ -12,19 +13,19 @@ const RecentContent = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [itemLists, setItemLists] = useState([]);
   const [isEnd, setIsEnd] = useState(false);
-  const posts = useSelector((state) => state.post.posts);
+  const [lastId, setLastId] = useState("");
   const dispatch = useDispatch();
+  const posts = useSelector((state) => state.post.posts);
   let last;
 
   const getMoreItem = async (last, items) => {
     setIsLoaded(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     setItemLists((itemLists) => itemLists.concat(items));
     setIsLoaded(false);
   };
 
   const onIntersect = async ([entry], observer) => {
-    console.log("fetch");
     if (entry.isIntersecting && !isLoaded) {
       observer.unobserve(entry.target);
       try {
@@ -36,17 +37,24 @@ const RecentContent = () => {
         await getMoreItem(last, items);
       } catch {
         setIsEnd(true);
+        console.log("end");
       }
+
       observer.observe(entry.target);
     }
   };
 
+  useEffect(() => {
+    axios.get("api/v1/posts/recent").then((response) => {
+      setItemLists(response.data);
+    });
+  }, []);
+
   useEffect(async () => {
     let observer;
     const res = await axios.get("http://localhost:8080/api/v1/posts/recent");
-    setItemLists(posts);
     last = await res.data[res.data.length - 1].postsId;
-    if (target) {
+    if (target && !isLoaded) {
       observer = new IntersectionObserver(onIntersect, {
         threshold: 0.5,
       });
@@ -63,8 +71,9 @@ const RecentContent = () => {
         })}
       </PostWrapperStyled>
       {isEnd && <div>마지막 게시물입니다.</div>}
-
-      <TargetStyled ref={setTarget}>{isLoaded && <Loader />}</TargetStyled>
+      {!isEnd && (
+        <TargetStyled ref={setTarget}>{isLoaded && <Loader />}</TargetStyled>
+      )}
     </>
   );
 };

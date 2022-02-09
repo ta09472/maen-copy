@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { memo, useState, useEffect } from "react";
 import PostStyled from "../styled/mainStyled/PostStyled";
 import UserBlock from "../common/UserBlock";
 import VideoModal from "../videoModal/VideoModal";
@@ -15,6 +15,7 @@ import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import ThumbnailWrapper from "../styled/mainStyled/ThumbnailWrapper";
 import Tag from "../common/Tag";
 import { fetchComments } from "../../redux/module/comment";
+
 import TagListWrapper from "../styled/commonStyled/TagListWrapper";
 
 const Post = ({ post }) => {
@@ -22,12 +23,17 @@ const Post = ({ post }) => {
   const [postTag, setPostTag] = useState(post);
   const postDetail = useSelector((state) => state.post.postDetail);
   const dispatch = useDispatch();
+  const isOpened = useSelector((state) => state.post.isOpened);
 
   const toggleModal = () => {
     const postId = post.postsId;
     setIsModalOpen(!isModalOpen);
-    dispatch(fetchDetailPost(post.postsId));
-    dispatch(fetchComments(`${postId}`));
+
+    if (!isModalOpen) {
+      dispatch(fetchDetailPost(post.postsId));
+      dispatch(fetchComments(`${postId}`));
+    }
+
     document.body.style.overflow = "auto";
   };
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const SideNavStyled = styled.nav`
   display: flex;
   flex-direction: column;
-  width: 50%;
+
   min-width: 220px;
   height: 92vh;
   position: sticky;

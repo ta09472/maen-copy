@@ -17,7 +17,6 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 public class PostsApiController {
 
     private final PostsService postsService;
