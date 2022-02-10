@@ -4,10 +4,8 @@ import { fetchPost } from "../../redux/module/post";
 import Post from "../main/Post";
 import Loader from "../main/Loader";
 import axios from "axios";
-import { throttle } from "lodash";
 import PostWrapperStyled from "../styled/mainStyled/PostWrapperStyled";
 import TargetStyled from "../styled/mainStyled/TargetStyled";
-
 const RecentContent = () => {
   const [target, setTarget] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);

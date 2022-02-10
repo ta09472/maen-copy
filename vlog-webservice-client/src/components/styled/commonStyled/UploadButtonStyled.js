@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 const UploadButtonStyled = styled.div`
   display: flex;
-  position: fixed;
-  bottom: 1.25em;
+  justify-content: center;
+
   border: none;
-  width: 60px;
-  height: 60px;
-  font-size: 50px;
+
+  font-size: 40px;
   color: #e84118;
 `;
 

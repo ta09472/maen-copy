@@ -5,7 +5,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  width: 100%;
+  max-width: 86.25em;
 `;
 
 export default ContentWrapper;

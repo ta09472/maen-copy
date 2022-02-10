@@ -6,13 +6,16 @@ import ChannelInfoWrapper from "./ChannelInfoWrapper";
 import Blank from "../styled/channelStyled/Blank";
 import Content from "../main/Content";
 import ContentWrapper from "../styled/mainStyled/ContentWrapper";
+import { useParams } from "react-router-dom";
 
 const Channel = () => {
+  const { userName } = useParams();
+  document.body.style.overflow = "auto";
   return (
     <ChannelWrapperStyled>
-      <Blank></Blank>
       <SideNav />
       <ContentWrapper>
+        <h2>{userName}</h2>
         <ChannelInfoWrapper />
         <Content />
       </ContentWrapper>

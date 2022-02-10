@@ -7,18 +7,14 @@ import SearchResult from "./components/search/SearchResult";
 import Channel from "./components/channel/Channel";
 import Recent from "./components/recent/Recent";
 import Upload from "./components/upload/Upload";
-
+import Error from "./components/common/Error";
 import VideoModal from "./components/videoModal/VideoModal";
 import { Route, Routes } from "react-router-dom";
-import UploadTest from "./components/UploadTest";
+
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { useMediaQuery } from "react-responsive";
 
 function App() {
-  const isMobile = useMediaQuery({
-    query: "(max-width:768px)",
-  });
   return (
     <>
       <GlobalStyled />
@@ -28,11 +24,12 @@ function App() {
             <Header></Header>
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route path="/channel" element={<Channel />} />
+              <Route path="channel/:userName" element={<Channel />} />
               <Route path="/upload" element={<Upload />} />
               <Route path="/recent" element={<Recent />} />
               <Route path="/search" element={<SearchResult />} />
-              <Route path="/uploadtest" element={<UploadTest />} />
+              <Route path="/upload" element={<Upload />} />
+              <Route path="*" element={<Error />} />
             </Routes>
           </GlobalWrapper>
         </Provider>

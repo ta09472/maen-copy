@@ -5,6 +5,7 @@ const HeaderStyled = styled.header`
   align-items: center;
   border-bottom: 1px solid #ccc;
   justify-content: space-around;
+
   position: sticky;
   top: 0;
   background: white;

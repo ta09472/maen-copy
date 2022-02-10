@@ -3,11 +3,11 @@ import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import UserName from "./UserName";
 import UserBlockStlyed from "../styled/commonStyled/UserBlockStyled";
 
-const UserBlock = () => {
+const UserBlock = ({ userName }) => {
   return (
     <UserBlockStlyed>
       <UserProfileStyled src="" width="32px" height="32px" />
-      <p>username</p>
+      <p>{userName}</p>
     </UserBlockStlyed>
   );
 };

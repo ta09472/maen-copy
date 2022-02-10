@@ -8,11 +8,7 @@ import ChannelDescription from "../channel/ChannelDescription";
 const ChannelInfoWrapper = () => {
   return (
     <ChannelInfoStyled>
-      <UserProfileStyled
-        src="../../public/logo192.png"
-        width="160px"
-        height="160px"
-      />
+      <UserProfileStyled src="" width="160px" height="160px" />
       <ChannelDetaillWrapper>
         <UserName />
         <ChannelDescription />

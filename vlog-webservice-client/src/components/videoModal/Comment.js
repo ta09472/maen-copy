@@ -10,11 +10,7 @@ const Comment = ({ comment }) => {
   return (
     <CommentWrapper>
       <UserBlockStlyed>
-        <UserProfileStyled
-          src="../../public/logo192.png"
-          width="32px"
-          height="32px"
-        />
+        <UserProfileStyled src="" width="32px" height="32px" />
         <p>{comment.author}</p>
       </UserBlockStlyed>
       {comment.contents}

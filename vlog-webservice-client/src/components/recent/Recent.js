@@ -1,25 +1,27 @@
 import React from "react";
 import Header from "../common/Header";
-import UploadButton from "../common/UploadButton";
+
 import SideNav from "../common/SideNav";
 import RecentContent from "./RecentContent";
 import Sort from "../main/Sort";
 import MainWrapper from "../styled/commonStyled/MainWrapper";
 import ContentWrapper from "../styled/mainStyled/ContentWrapper";
 import HomeWrapper from "../styled/mainStyled/HomeWrapper";
-import Upload from "../upload/Upload";
-import { Route, Routes, Link } from "react-router-dom";
 
+import { Route, Routes, Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 const Recent = () => {
+  const isMobile = useMediaQuery({
+    query: "(max-width:1024px)",
+  });
   return (
     <HomeWrapper>
-      <SideNav />
+      {isMobile ? null : <SideNav />}
       <MainWrapper>
         <ContentWrapper>
           <Sort />
           <RecentContent />
         </ContentWrapper>
-        <UploadButton />
       </MainWrapper>
     </HomeWrapper>
   );

@@ -15,7 +15,7 @@ import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import ThumbnailWrapper from "../styled/mainStyled/ThumbnailWrapper";
 import Tag from "../common/Tag";
 import { fetchComments } from "../../redux/module/comment";
-
+import { Link } from "react-router-dom";
 import TagListWrapper from "../styled/commonStyled/TagListWrapper";
 
 const Post = ({ post }) => {
@@ -51,10 +51,12 @@ const Post = ({ post }) => {
           height="80%"
           src={`http://localhost:8080/api/v1/posts/thumbnail/${post.thumbnailName}`}
         />
-        <UserBlockStlyed>
-          <UserProfileStyled width="32px" height="32px" src="" />
-          <p>{post.authorName}</p>
-        </UserBlockStlyed>
+        <Link to={`/channel/${post.authorName}`}>
+          <UserBlockStlyed>
+            <UserProfileStyled width="32px" height="32px" src="" />
+            <p>{post.authorName}</p>
+          </UserBlockStlyed>
+        </Link>
         <MdFavorite /> :{post.postsLike}
         <MdPlayArrow /> : {post.views}
         <TagListWrapper>{tagList}</TagListWrapper>

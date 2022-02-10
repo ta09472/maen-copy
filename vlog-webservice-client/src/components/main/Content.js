@@ -13,6 +13,7 @@ const Content = () => {
   const [itemLists, setItemLists] = useState([]);
   const [isEnd, setIsEnd] = useState(false);
   const [lastId, setLastId] = useState("");
+
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.post.posts);
   let last;
@@ -20,9 +21,10 @@ const Content = () => {
   const getMoreItem = async (last, items) => {
     setIsLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
-    if (items == itemLists) {
-      setItemLists((itemLists) => itemLists.concat(items));
-    }
+
+    await setItemLists((itemLists) => itemLists.concat(items));
+
+    /* 중복되는 아이템이 리스트에 추가되는 버그존재*/
     setIsLoaded(false);
   };
 
@@ -33,7 +35,6 @@ const Content = () => {
         const response = await axios.get(
           `http://localhost:8080/api/v1/posts/${last}/popular`
         );
-
         last = await response.data[response.data.length - 1].postsId;
         let items = response.data;
         await getMoreItem(last, items);
@@ -50,7 +51,6 @@ const Content = () => {
       setItemLists(response.data);
     });
   }, []);
-
   useEffect(async () => {
     let observer;
 

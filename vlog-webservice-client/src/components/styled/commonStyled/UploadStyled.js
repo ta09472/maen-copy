@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const UploadStyled = styled.div`
-  display: flex;
+  z-index: 5;
+  padding-top: 10px;
 `;
 
 export default UploadStyled;

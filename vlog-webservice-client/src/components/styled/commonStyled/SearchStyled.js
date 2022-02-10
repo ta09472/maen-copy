@@ -4,7 +4,7 @@ const SearchStyled = styled.input`
   border-radius: 5px;
   border: none;
   height: 2em;
-  width: 300px;
+  width: 16vw;
   display: flex;
   justify-content: center;
   align-items: center;

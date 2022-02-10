@@ -21,10 +21,7 @@ const SearchTag = () => {
 
   return (
     <SearchTagStyled>
-      <PostWrapperStyled>
-        <p>Posts</p>
-        {resultList}
-      </PostWrapperStyled>
+      <PostWrapperStyled>{resultList}</PostWrapperStyled>
     </SearchTagStyled>
   );
 };

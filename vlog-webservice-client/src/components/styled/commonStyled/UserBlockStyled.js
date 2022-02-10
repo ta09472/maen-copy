@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const UserBlockStyled = styled.div`
   display: flex;
-  align-items: center;
+  align-text: center;
   margin: 0.3em 0;
 `;
 

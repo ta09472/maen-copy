@@ -7,6 +7,8 @@ const TagWrapper = styled.a`
   background-color: #b2bec3;
   padding: 2px 5px;
   margin-right: 6px;
+  margin-top: 5px;
+  width: 60%;
 `;
 
 export default TagWrapper;
