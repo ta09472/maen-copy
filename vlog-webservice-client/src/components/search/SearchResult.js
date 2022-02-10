@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import Header from "../common/Header";
 import UploadButton from "../common/UploadButton";
 import SideNav from "../common/SideNav";
+
 import MainWrapper from "../styled/commonStyled/MainWrapper";
+import ContentWrapper from "../styled/mainStyled/ContentWrapper";
+
 import SearchResultWrapper from "../styled/searchStyled/SearchResultWrapper";
-import ResultWrapper from "../styled/searchStyled/ResultWrapper";
+
 import HomeWrapper from "../styled/mainStyled/HomeWrapper";
 import Upload from "../upload/Upload";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, NavLink } from "react-router-dom";
 import SearchUser from "./SearchUser";
 import SearchTag from "./SearchTag";
 import Content from "../main/Content";
@@ -16,6 +19,11 @@ import { getSearch, setInput } from "../../redux/module/search";
 import SortStyled from "../styled/mainStyled/SortStyled";
 import { useMediaQuery } from "react-responsive";
 
+const navLinkStyled = ({ isActive }) => {
+  return {
+    borderBottom: isActive ? "2px solid black" : "white",
+  };
+};
 const SearchResult = () => {
   const dispatch = useDispatch();
   const keyword = useSelector((state) => state.search.input);
@@ -34,18 +42,18 @@ const SearchResult = () => {
     <HomeWrapper>
       {isMobile ? null : <SideNav />}
       <SearchResultWrapper>
-        <SortStyled>
-          {isEmpty ? (
-            <p>"{keyword}"에 대한 검색결과가 없습니다.</p>
-          ) : (
-            <>
-              <p>"{keyword}"에 대한 검색결과입니다.</p>
-              <p>{results.length}개의 콘텐츠가 있습니다.</p>
-            </>
-          )}
-        </SortStyled>
-
-        <SearchTag />
+        {isEmpty ? (
+          <p>"{keyword}"에 대한 검색결과가 없습니다.</p>
+        ) : (
+          <>
+            <p>"{keyword}"에 대한 검색결과입니다.</p>
+            <p>{results.length}개의 콘텐츠가 있습니다.</p>
+          </>
+        )}
+        <ContentWrapper>
+          <SearchUser />
+          <SearchTag />
+        </ContentWrapper>
       </SearchResultWrapper>
     </HomeWrapper>
   );

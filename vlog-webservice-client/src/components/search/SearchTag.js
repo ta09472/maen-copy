@@ -21,6 +21,7 @@ const SearchTag = () => {
 
   return (
     <SearchTagStyled>
+      Posts
       <PostWrapperStyled>{resultList}</PostWrapperStyled>
     </SearchTagStyled>
   );

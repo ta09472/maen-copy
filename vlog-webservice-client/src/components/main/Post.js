@@ -51,7 +51,7 @@ const Post = ({ post }) => {
           height="80%"
           src={`http://localhost:8080/api/v1/posts/thumbnail/${post.thumbnailName}`}
         />
-        <Link to={`/channel/${post.authorName}`}>
+        <Link to={`/channel/${post.authorName}/`}>
           <UserBlockStlyed>
             <UserProfileStyled width="32px" height="32px" src="" />
             <p>{post.authorName}</p>

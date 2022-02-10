@@ -9,9 +9,12 @@ a {
 a:visited {
   color: transparent;
 }
-
+img {
+  cursor: pointer;
+}
 button {
   color: #718093;
+  cursor: pointer;
 }
 
 body {

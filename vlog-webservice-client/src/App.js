@@ -10,7 +10,6 @@ import Upload from "./components/upload/Upload";
 import Error from "./components/common/Error";
 import VideoModal from "./components/videoModal/VideoModal";
 import { Route, Routes } from "react-router-dom";
-
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 

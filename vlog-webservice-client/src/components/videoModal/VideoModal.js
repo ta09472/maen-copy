@@ -9,8 +9,14 @@ import { MdClose } from "react-icons/md";
 import VideoContent from "../videoModal/VideoContent";
 import SideContent from "../videoModal/SideContent";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleModal } from "../../redux/module/modal";
 
 const VideoModal = ({ isOpened, children, onClose, videoSrc, tags }) => {
+  const isModalOpened = useSelector((state) => state.modal.isModalOpened);
+  const dispatch = useDispatch();
+
+  console.log(isModalOpened);
   if (!isOpened) {
     return null;
   }
