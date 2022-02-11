@@ -3,7 +3,7 @@ const TOGGLE_MODAL = "TOGGLE_MODAL";
 
 //action
 
-export const toggleModal = () => (dispatch) => {
+export const toggledModal = () => (dispatch) => {
   dispatch({ type: TOGGLE_MODAL });
 };
 

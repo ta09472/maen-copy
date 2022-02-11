@@ -12,7 +12,7 @@ import VideoModal from "./components/videoModal/VideoModal";
 import { Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-
+import Test from "./Test";
 function App() {
   return (
     <>
@@ -29,6 +29,7 @@ function App() {
               <Route path="/search" element={<SearchResult />} />
               <Route path="/upload" element={<Upload />} />
               <Route path="*" element={<Error />} />
+              <Route path="/test" element={<Test />} />
             </Routes>
           </GlobalWrapper>
         </Provider>

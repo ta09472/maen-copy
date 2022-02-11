@@ -12,7 +12,7 @@ export const loginRequest = (user) => async (dispatch) => {
 };
 
 export const logoutRequset = (user) => async (dispatch) => {
-  const response = await axios.get("url");
+  const response = await axios.post("url", user);
   dispatch({ type: LOGOUT_REQUEST });
 };
 // initialState

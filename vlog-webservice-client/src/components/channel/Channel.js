@@ -17,7 +17,6 @@ const Channel = () => {
       <ContentWrapper>
         <h2>{userName}</h2>
         <ChannelInfoWrapper />
-        <Content />
       </ContentWrapper>
     </ChannelWrapperStyled>
   );
