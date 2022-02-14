@@ -6,7 +6,7 @@ const UploadWrapper = styled.div`
   align-items: center;
   width: 100%;
 
-  margin-top: 8em;
+  margin-top: 6em;
 `;
 
 export default UploadWrapper;

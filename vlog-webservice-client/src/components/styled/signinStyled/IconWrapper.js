@@ -9,6 +9,7 @@ const IconWrapper = styled.div`
   margin-top: 0.2em;
   border: 1px solid #dcdde1;
   border-radius: 4px;
+  cursor: pointer;
 `;
 
 export default IconWrapper;

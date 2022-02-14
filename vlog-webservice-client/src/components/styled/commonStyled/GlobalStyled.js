@@ -32,6 +32,7 @@ p {
 }
 html {
   z-index: 1;
+  
 }
 .Uploader {
   transition: 500ms;

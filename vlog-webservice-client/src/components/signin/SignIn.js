@@ -11,11 +11,26 @@ import OverlayStyled from "../styled/modalStyled/OverlayStyled";
 import SigninModalStyled from "../styled/signinStyled/SigninModalStyled";
 import CloseButton from "../styled/modalStyled/CloseButton";
 import { MdClose } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { loginRequest } from "../../redux/module/login";
 
 const SignIn = ({ isOpened, children, onClose }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+
   if (!isOpened) {
     return null;
   }
+  const handleGoogleClick = async (e) => {
+    e.preventDefault();
+    const response = await axios.get(
+      "http://localhost:8080/oauth2/authorization/google"
+    );
+    console.log(response);
+  };
   return createPortal(
     <GlobalWrapper>
       <OverlayStyled></OverlayStyled>
@@ -30,7 +45,7 @@ const SignIn = ({ isOpened, children, onClose }) => {
             <p>Join in MAEN</p>
           </div>
 
-          <IconWrapper>
+          <IconWrapper onClick={handleGoogleClick}>
             <SignIconBlock>
               <FcGoogle />
             </SignIconBlock>

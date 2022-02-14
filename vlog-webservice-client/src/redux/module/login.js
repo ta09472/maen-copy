@@ -7,8 +7,8 @@ const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 // action
 
 export const loginRequest = (user) => async (dispatch) => {
-  const response = await axios.get("url");
-  dispatch({ type: LOGIN_REQUEST, payload: response.data });
+  /*const response = await axios.get("url");  */
+  dispatch({ type: LOGIN_REQUEST });
 };
 
 export const logoutRequset = (user) => async (dispatch) => {
@@ -18,7 +18,7 @@ export const logoutRequset = (user) => async (dispatch) => {
 // initialState
 
 const initialState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   user: {},
 };
 
@@ -28,12 +28,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         isLoggedIn: true,
-        user: action.payload,
       };
     case LOGOUT_REQUEST:
       return {
         ...state,
         isLoggedIn: false,
+        user: {},
       };
     default:
       return state;

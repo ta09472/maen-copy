@@ -52,6 +52,7 @@ const UploadTest = () => {
 
   const handleFileChange = (e) => {
     const video = e.target.files[0];
+
     setInputs({
       ...inputs,
       [e.target.name]: video,
@@ -75,12 +76,15 @@ const UploadTest = () => {
       .then((res) => {
         //handle success
         navigate("/");
-        toast("업로드 되었습니다. :)", {
+        toast.success("업로드 되었습니다. :)", {
           position: toast.POSITION.TOP_CENTER,
         });
       })
       .catch((err) => {
         //handle error
+        toast.error("업로드에 실패하였습니다. :(", {
+          position: toast.POSITION.TOP_CENTER,
+        });
         navigate("/");
       });
   };
@@ -98,9 +102,9 @@ const UploadTest = () => {
                 </label>
                 <input
                   id="inputFile"
-                  multiple
                   type="file"
                   name="video"
+                  accept=".mp4"
                   onChange={handleFileChange}
                 />
               </UploaderStyled>
