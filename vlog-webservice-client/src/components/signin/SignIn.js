@@ -25,7 +25,6 @@ const SignIn = ({ isOpened, children, onClose }) => {
     return null;
   }
   const handleGoogleClick = (e) => {
-    e.preventDefault();
     window.location.href = "http://localhost:8080/api/v1/login";
   };
   return createPortal(

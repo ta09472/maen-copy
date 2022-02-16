@@ -14,6 +14,7 @@ const Loading = () => {
     const params = new URL(window.location.href).searchParams.get("code");
 
     dispatch(getCode(params));
+    console.log(params);
     const user = {
       username: "abc",
       email: "abc@gmail.com",

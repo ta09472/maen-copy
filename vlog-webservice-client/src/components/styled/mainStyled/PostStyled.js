@@ -3,7 +3,7 @@ import styled from "styled-components";
 const PostStyled = styled.div`
   border-radius: 5px;
   width: 20em;
-  height: 18em;
+  height: 19em;
   margin: 1em;
   transition: transform 700ms;
 

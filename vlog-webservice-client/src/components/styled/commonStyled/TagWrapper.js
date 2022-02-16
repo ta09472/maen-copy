@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TagWrapper = styled.a`
+const TagWrapper = styled.div`
   border-radius: 4px;
   color: #2d3436;
   font-size: 14px;
@@ -9,6 +9,7 @@ const TagWrapper = styled.a`
   margin-right: 6px;
   margin-top: 5px;
   width: 60%;
+  cursor: pointer;
 `;
 
 export default TagWrapper;

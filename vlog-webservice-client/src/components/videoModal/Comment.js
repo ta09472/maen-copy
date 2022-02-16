@@ -10,8 +10,10 @@ const Comment = ({ comment }) => {
   return (
     <CommentWrapper>
       <UserBlockStlyed>
-        <UserProfileStyled src="" width="32px" height="32px" />
-        <p>{comment.author}</p>
+        <Link to={`/channel/${comment.author}`}>
+          <UserProfileStyled src="" width="32px" height="32px" />
+          {comment.author}
+        </Link>
       </UserBlockStlyed>
       {comment.contents}
     </CommentWrapper>
