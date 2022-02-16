@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
+import { useSelector } from "react-redux";
+
 const Test = () => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
 
-  const handleGoogleClick = async () => {
-    await axios.get("http://localhost:3000").then((res) => {
-      console.log(res);
-    });
-  };
-
+  const handleGoogleClick = async () => {};
+  const handleClick = async () => {};
   const fetchPost = async () => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/posts"
@@ -23,12 +21,8 @@ const Test = () => {
   };
   return (
     <div>
-      <button onClick={fetchPost}>google</button>
-      <GoogleLogin
-        clientId="361528373689-cb76q46e3uuqoc90299inhil1no02e4j.apps.googleusercontent.com"
-        success={handleGoogleClick}
-        failure={handleGoogleClick}
-      />
+      <button onClick={fetchPost}>post</button>
+      <button onClick={handleClick}>google</button>
     </div>
   );
 };

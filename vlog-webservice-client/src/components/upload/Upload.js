@@ -19,6 +19,7 @@ toast.configure();
 const UploadTest = () => {
   /* tag 분리 하는 로직 */
   const [tagList, setTagList] = useState([]);
+  const [isValid, setIsVaild] = useState("black");
   const [tag, setTag] = useState("");
   const navigate = useNavigate();
 
@@ -51,7 +52,11 @@ const UploadTest = () => {
   };
 
   const handleFileChange = (e) => {
-    const video = e.target.files[0];
+    const file = e.target.files[0];
+    if (file !== null) {
+      setIsVaild("#4cd137");
+    }
+    const video = file;
 
     setInputs({
       ...inputs,
@@ -98,7 +103,11 @@ const UploadTest = () => {
               <h3>Upload Your Days</h3>
               <UploaderStyled>
                 <label htmlFor="inputFile">
-                  <MdPresentToAll size="50px" className="Uploader" />
+                  <MdPresentToAll
+                    size="50px"
+                    color={isValid}
+                    cursor="pointer"
+                  />
                 </label>
                 <input
                   id="inputFile"

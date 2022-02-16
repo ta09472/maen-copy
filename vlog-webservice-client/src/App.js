@@ -8,6 +8,7 @@ import Channel from "./components/channel/Channel";
 import Recent from "./components/recent/Recent";
 import Upload from "./components/upload/Upload";
 import Error from "./components/common/Error";
+import Loading from "./components/common/Loading";
 import VideoModal from "./components/videoModal/VideoModal";
 import { Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -20,7 +21,7 @@ function App() {
       <div className="App">
         <Provider store={store}>
           <GlobalWrapper>
-            <Header></Header>
+            <Header />
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="channel/:userName" element={<Channel />} />
@@ -28,6 +29,7 @@ function App() {
               <Route path="/recent" element={<Recent />} />
               <Route path="/search" element={<SearchResult />} />
               <Route path="/upload" element={<Upload />} />
+              <Route path="/loading" element={<Loading />} />
               <Route path="*" element={<Error />} />
               <Route path="/test" element={<Test />} />
             </Routes>

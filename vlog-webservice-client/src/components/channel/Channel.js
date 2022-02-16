@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SideNav from "../common/SideNav";
 import ChannelWrapperStyled from "../styled/channelStyled/ChannelWrapperStyled";
 import ChannelContentWrapper from "../styled/channelStyled/ChannelContentWrapper";
@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 
 const Channel = () => {
   const { userName } = useParams();
+
   document.body.style.overflow = "auto";
   return (
     <ChannelWrapperStyled>

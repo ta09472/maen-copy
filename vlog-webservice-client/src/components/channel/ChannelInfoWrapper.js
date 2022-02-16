@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ChannelInfoStyled from "../styled/channelStyled/ChannelInfoStyled";
 import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import ChannelDetaillWrapper from "../styled/channelStyled/ChannelDetaillWrapper";

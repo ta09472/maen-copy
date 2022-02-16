@@ -40,7 +40,6 @@ const Content = () => {
         await getMoreItem(last, items);
       } catch {
         setIsEnd(true);
-        console.log("end");
       }
       observer.observe(entry.target);
     }
@@ -55,6 +54,7 @@ const Content = () => {
     let observer;
 
     const res = await axios.get("http://localhost:8080/api/v1/posts/popular");
+
     last = await res.data[res.data.length - 1].postsId;
 
     if (target && !isLoaded) {

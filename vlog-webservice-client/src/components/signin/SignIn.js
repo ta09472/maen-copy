@@ -24,12 +24,9 @@ const SignIn = ({ isOpened, children, onClose }) => {
   if (!isOpened) {
     return null;
   }
-  const handleGoogleClick = async (e) => {
+  const handleGoogleClick = (e) => {
     e.preventDefault();
-    const response = await axios.get(
-      "http://localhost:8080/oauth2/authorization/google"
-    );
-    console.log(response);
+    window.location.href = "http://localhost:8080/api/v1/login";
   };
   return createPortal(
     <GlobalWrapper>
