@@ -9,9 +9,18 @@ export const fetchComments = (post_id) => async (dispatch) => {
   dispatch({ type: FETCH_COMMENTS, payload: response.data });
 };
 
-export const submitComment = (input) => async (dispatch) => {
-  const response = await axios.post("/api/v1/comments", input);
-  dispatch({ type: SUBMIT_COMMENT });
+export const submitComment = (postsId, userId, input) => async (dispatch) => {
+  const data = { postsId: postsId, userId: userId, content: input };
+  const response = await axios.post(
+    "http://localhost:8080/api/v1/comments",
+    data
+  );
+
+  let lastComment = await axios.get(
+    `api/v1/posts/${postsId}/comments/${response.data + 1}`
+  );
+
+  dispatch({ type: SUBMIT_COMMENT, payload: lastComment.data[0] });
 };
 
 // initialState
@@ -29,8 +38,9 @@ export default function reducer(state = initialState, action) {
     case SUBMIT_COMMENT:
       return {
         ...state,
-        comments: [...state.comments, ...action.payload],
+        comments: [...state.comments, action.payload],
       };
+
     default:
       return state;
   }

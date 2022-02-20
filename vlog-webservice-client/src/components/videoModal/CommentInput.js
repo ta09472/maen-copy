@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import InputStyled from "../styled/modalStyled/InputStyled";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
-import { useDispatch } from "react-redux";
+
 import { submitComment } from "../../redux/module/comment";
 
 const CommentInput = () => {
   const cookies = new Cookies();
-  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const isLoggedIn = cookies.get("isLoggedIn");
+  const { postsId } = useSelector((state) => state.post.postDetail);
   const [commentInput, setCommentInput] = useState("");
+
   const dispatch = useDispatch();
 
   const handleInput = (e) => {
@@ -23,9 +25,11 @@ const CommentInput = () => {
   };
 
   const handleSubmit = (e) => {
-    if (e.key === "Enter") {
-      const userName = cookies.get("user");
-      dispatch(submitComment(commentInput));
+    if (commentInput !== "" && e.key === "Enter") {
+      const userId = cookies.get("user").userId;
+      dispatch(submitComment(postsId, userId, commentInput));
+      setCommentInput("");
+      e.target.value = "";
     }
   };
   return (

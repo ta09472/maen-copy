@@ -3,9 +3,12 @@ import { MdFavorite } from "react-icons/md";
 import react, { useState } from "react";
 import LikeStyled from "../styled/modalStyled/LikeStyled";
 import { useSelector } from "react-redux";
+import Cookies from "universal-cookie";
+
 const Like = () => {
   const [isLiked, setIsLiked] = useState(false);
-  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const cookies = new Cookies();
+  const isLoggedIn = cookies.get("isLoggedIn");
 
   const handleLike = (e) => {
     if (!isLoggedIn) {

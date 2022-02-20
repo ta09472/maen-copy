@@ -15,8 +15,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loginRequest, getPath } from "../../redux/module/login";
+import Cookies from "universal-cookie";
 
 const SignIn = ({ isOpened, children, onClose }) => {
+  const cookies = new Cookies();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
@@ -27,7 +29,7 @@ const SignIn = ({ isOpened, children, onClose }) => {
 
   const handleAuthClick = (e) => {
     const path = e.target.dataset.auth;
-    dispatch(getPath(path));
+    cookies.set("path", path, { path: "/" });
     window.location.href = `/api/v1/login/${path}`;
   };
 

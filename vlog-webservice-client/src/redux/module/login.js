@@ -1,4 +1,6 @@
 import axios from "axios";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 //actiontype
 
 const LOGIN_REQUEST = "LOGIN_REQUEST";
@@ -8,13 +10,20 @@ const SEND_CODE = "SEND_CODE";
 const GET_PATH = "GET_PATH";
 // action
 
-export const loginRequest = (user) => async (dispatch) => {
-  /*const response = await axios.get("url");  */
-  dispatch({ type: LOGIN_REQUEST, payload: user });
+export const loginRequest = (path, authCode) => async (dispatch) => {
+  const response = await axios.get(`http://localhost:8080/api/v1/jwt/${path}`, {
+    params: {
+      code: authCode,
+    },
+  });
+  cookies.set("user", response.data, { path: "/" });
+  cookies.set("isLoggedIn", true, { path: "/" });
+  dispatch({ type: LOGIN_REQUEST, payload: response.data });
 };
 
-export const logoutRequset = (user) => async (dispatch) => {
-  const response = await axios.post("url", user);
+export const logoutRequset = () => async (dispatch) => {
+  cookies.remove("isLoggedIn");
+  cookies.remove("user");
   dispatch({ type: LOGOUT_REQUEST });
 };
 

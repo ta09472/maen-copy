@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeaderStyled from "../styled/commonStyled/HeaderStyled";
 import Wrapper from "../styled/commonStyled/Wrapper";
 import Logo from "./Logo";
@@ -18,17 +18,18 @@ import Cookies from "universal-cookie";
 
 const Header = () => {
   const cookies = new Cookies();
-  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
-  const userData = useSelector((state) => state.login.user);
+  const isLoggedIn = cookies.get("isLoggedIn");
+  const userData = cookies.get("user");
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useDispatch();
+
   const handleClick = () => {
     setIsVisible(!isVisible);
   };
 
   const handleLogout = () => {
-    dispatch(logoutRequset);
-    window.location.href = "/";
+    dispatch(logoutRequset());
+    window.location.reload();
   };
 
   return (

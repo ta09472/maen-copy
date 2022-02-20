@@ -8,7 +8,7 @@ const TagWrapper = styled.div`
   padding: 2px 5px;
   margin-right: 6px;
   margin-top: 5px;
-  width: 60%;
+
   cursor: pointer;
 `;
 

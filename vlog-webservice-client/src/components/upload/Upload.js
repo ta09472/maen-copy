@@ -16,7 +16,9 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { useSelector } from "react-redux";
+
 toast.configure();
+
 const UploadTest = () => {
   const cookies = new Cookies();
   /* tag 분리 하는 로직 */
@@ -26,7 +28,6 @@ const UploadTest = () => {
   const navigate = useNavigate();
 
   const userData = cookies.get("user");
-  const reduxuser = useSelector((state) => state.login.user);
 
   const handleChange = (e) => {
     if (e.keyCode == 32) {
@@ -37,8 +38,6 @@ const UploadTest = () => {
   const handleKeyDown = (e) => {
     if (e.keyCode == 32) {
       setTagList([...tagList, tag]);
-
-      console.log(tagList);
     }
   };
 
