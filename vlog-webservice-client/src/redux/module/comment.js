@@ -9,9 +9,9 @@ export const fetchComments = (post_id) => async (dispatch) => {
   dispatch({ type: FETCH_COMMENTS, payload: response.data });
 };
 
-export const submitCommen = (comment) => async (dispatch) => {
-  const response = await axios.post("url", comment);
-  dispatch({ type: SUBMIT_COMMENT, payload: comment });
+export const submitComment = (input) => async (dispatch) => {
+  const response = await axios.post("/api/v1/comments", input);
+  dispatch({ type: SUBMIT_COMMENT });
 };
 
 // initialState

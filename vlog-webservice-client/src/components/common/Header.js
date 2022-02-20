@@ -14,12 +14,14 @@ import { logoutRequset } from "../../redux/module/login";
 import { useNavigate } from "react-router-dom";
 import { MdAccountCircle, MdLogout } from "react-icons/md";
 import IconWrapper from "../styled/commonStyled/IconWrapper";
+import Cookies from "universal-cookie";
 
 const Header = () => {
+  const cookies = new Cookies();
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const userData = useSelector((state) => state.login.user);
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useDispatch();
-
   const handleClick = () => {
     setIsVisible(!isVisible);
   };
@@ -29,8 +31,6 @@ const Header = () => {
     window.location.href = "/";
   };
 
-  const [user, setUser] = useState("철수");
-
   return (
     <HeaderStyled>
       <Logo />
@@ -39,9 +39,9 @@ const Header = () => {
         {isLoggedIn && <UploadButton />}
         {isLoggedIn ? (
           <div onClick={handleClick}>
-            <UserBlock userName={user} />
+            <UserBlock userName={userData.name} />
             <DropDown visible={isVisible}>
-              <Link to={`/channel/${user}`} color="#7f8fa6">
+              <Link to={`/channel/${userData.name}`} color="#7f8fa6">
                 <IconWrapper>
                   <MdAccountCircle />
                   Channel

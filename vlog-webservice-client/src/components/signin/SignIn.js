@@ -5,7 +5,7 @@ import SignIconBlock from "../styled/signinStyled/SignIconBlock";
 import GlobalWrapper from "../styled/commonStyled/GlobalWrapper";
 import { FcGoogle } from "react-icons/fc";
 import { RiKakaoTalkFill } from "react-icons/ri";
-import { FaFacebook } from "react-icons/fa";
+import { SiNaver } from "react-icons/si";
 import { createPortal } from "react-dom";
 import OverlayStyled from "../styled/modalStyled/OverlayStyled";
 import SigninModalStyled from "../styled/signinStyled/SigninModalStyled";
@@ -14,7 +14,7 @@ import { MdClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { loginRequest } from "../../redux/module/login";
+import { loginRequest, getPath } from "../../redux/module/login";
 
 const SignIn = ({ isOpened, children, onClose }) => {
   const navigate = useNavigate();
@@ -24,9 +24,13 @@ const SignIn = ({ isOpened, children, onClose }) => {
   if (!isOpened) {
     return null;
   }
-  const handleGoogleClick = (e) => {
-    window.location.href = "http://localhost:8080/api/v1/login";
+
+  const handleAuthClick = (e) => {
+    const path = e.target.dataset.auth;
+    dispatch(getPath(path));
+    window.location.href = `/api/v1/login/${path}`;
   };
+
   return createPortal(
     <GlobalWrapper>
       <OverlayStyled></OverlayStyled>
@@ -41,23 +45,24 @@ const SignIn = ({ isOpened, children, onClose }) => {
             <p>Join in MAEN</p>
           </div>
 
-          <IconWrapper onClick={handleGoogleClick}>
+          <IconWrapper onClick={handleAuthClick} data-auth="google">
             <SignIconBlock>
               <FcGoogle />
             </SignIconBlock>
             Login with Google
           </IconWrapper>
-          <IconWrapper>
+          <IconWrapper onClick={handleAuthClick} data-auth="kakao">
             <SignIconBlock>
               <RiKakaoTalkFill />
             </SignIconBlock>
             Login with KakaoTalks
           </IconWrapper>
-          <IconWrapper>
+
+          <IconWrapper onClick={handleAuthClick} data-auth="naver">
             <SignIconBlock>
-              <FaFacebook />
+              <SiNaver />
             </SignIconBlock>
-            Login with Facebook
+            Login with Naver
           </IconWrapper>
         </SigninWrapper>
       </SigninModalStyled>

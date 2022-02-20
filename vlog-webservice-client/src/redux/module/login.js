@@ -5,6 +5,7 @@ const LOGIN_REQUEST = "LOGIN_REQUEST";
 const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 const GET_CODE = "GET_CODE";
 const SEND_CODE = "SEND_CODE";
+const GET_PATH = "GET_PATH";
 // action
 
 export const loginRequest = (user) => async (dispatch) => {
@@ -21,12 +22,17 @@ export const getCode = (code) => (dispatch) => {
   dispatch({ type: GET_CODE, payload: code });
 };
 
+export const getPath = (path) => async (dispatch) => {
+  dispatch({ type: GET_PATH, payload: path });
+};
+
 // initialState
 
 const initialState = {
   isLoggedIn: false,
   user: {},
   code: null,
+  path: "",
 };
 
 export default function reducer(state = initialState, action) {
@@ -47,6 +53,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         code: action.payload,
+      };
+    case GET_PATH:
+      return {
+        ...state,
+        path: action.payload,
       };
     default:
       return state;

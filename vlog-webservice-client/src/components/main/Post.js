@@ -15,6 +15,7 @@ import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import ThumbnailWrapper from "../styled/mainStyled/ThumbnailWrapper";
 import Tag from "../common/Tag";
 import { fetchComments } from "../../redux/module/comment";
+import { toggledModal } from "../../redux/module/modal";
 import { Link } from "react-router-dom";
 import TagListWrapper from "../styled/commonStyled/TagListWrapper";
 

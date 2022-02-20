@@ -3,8 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { useSelector } from "react-redux";
+import Cookies from "universal-cookie";
 
 const Test = () => {
+  const cookies = new Cookies();
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -19,6 +21,7 @@ const Test = () => {
     console.log(response);
     console.log("headers", response.headers);
   };
+  console.log(cookies.get("user"));
   return (
     <div>
       <button onClick={fetchPost}>post</button>

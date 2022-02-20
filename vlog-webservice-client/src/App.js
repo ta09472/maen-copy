@@ -9,32 +9,29 @@ import Recent from "./components/recent/Recent";
 import Upload from "./components/upload/Upload";
 import Error from "./components/common/Error";
 import Loading from "./components/common/Loading";
-import VideoModal from "./components/videoModal/VideoModal";
+
 import { Route, Routes } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
+
 import Test from "./Test";
 function App() {
   return (
     <>
       <GlobalStyled />
       <div className="App">
-        <Provider store={store}>
-          <GlobalWrapper>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="channel/:userName" element={<Channel />} />
-              <Route path="/upload" element={<Upload />} />
-              <Route path="/recent" element={<Recent />} />
-              <Route path="/search" element={<SearchResult />} />
-              <Route path="/upload" element={<Upload />} />
-              <Route path="/loading" element={<Loading />} />
-              <Route path="*" element={<Error />} />
-              <Route path="/test" element={<Test />} />
-            </Routes>
-          </GlobalWrapper>
-        </Provider>
+        <GlobalWrapper>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="channel/:userName" element={<Channel />} />
+            <Route path="/upload" element={<Upload />} />
+            <Route path="/recent" element={<Recent />} />
+            <Route path="/search" element={<SearchResult />} />
+            <Route path="/upload" element={<Upload />} />
+            <Route path="/loading" element={<Loading />} />
+            <Route path="*" element={<Error />} />
+            <Route path="/test" element={<Test />} />
+          </Routes>
+        </GlobalWrapper>
       </div>
     </>
   );

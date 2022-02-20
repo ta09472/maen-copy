@@ -14,14 +14,19 @@ import { toast } from "react-toastify";
 import { MdPresentToAll } from "react-icons/md";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-
+import Cookies from "universal-cookie";
+import { useSelector } from "react-redux";
 toast.configure();
 const UploadTest = () => {
+  const cookies = new Cookies();
   /* tag 분리 하는 로직 */
   const [tagList, setTagList] = useState([]);
   const [isValid, setIsVaild] = useState("black");
   const [tag, setTag] = useState("");
   const navigate = useNavigate();
+
+  const userData = cookies.get("user");
+  const reduxuser = useSelector((state) => state.login.user);
 
   const handleChange = (e) => {
     if (e.keyCode == 32) {
@@ -63,12 +68,11 @@ const UploadTest = () => {
       [e.target.name]: video,
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("video", inputs.video);
-    formData.append("userId", inputs.userId);
+    formData.append("userId", userData.userId);
     formData.append("tags", inputs.tags);
     formData.append("description", inputs.description);
 
@@ -119,13 +123,6 @@ const UploadTest = () => {
               </UploaderStyled>
             </PostFormStyled>
             <InputWrapper>
-              <input
-                type="text"
-                name="userId"
-                placeholder="userid"
-                value={inputs.userId}
-                onChange={onChange}
-              />
               <CaptionInput
                 type="text"
                 name="tags"
