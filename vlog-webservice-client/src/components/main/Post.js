@@ -54,7 +54,7 @@ const Post = ({ post }) => {
         />
         <Link to={`/channel/${post.authorName}/`}>
           <UserBlockStlyed>
-            <UserProfileStyled width="32px" height="32px" src="" />
+            <UserProfileStyled width="32px" height="32px" />
             <p>{post.authorName}</p>
           </UserBlockStlyed>
         </Link>

@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { MdAccountCircle, MdLogout } from "react-icons/md";
 import IconWrapper from "../styled/commonStyled/IconWrapper";
 import Cookies from "universal-cookie";
-
+import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 const Header = () => {
   const cookies = new Cookies();
   const isLoggedIn = cookies.get("isLoggedIn");
@@ -40,7 +40,10 @@ const Header = () => {
         {isLoggedIn && <UploadButton />}
         {isLoggedIn ? (
           <div onClick={handleClick}>
-            <UserBlock userName={userData.name} />
+            <UserBlock
+              userName={userData.name}
+              src={cookies.get("user").picture}
+            />
             <DropDown visible={isVisible}>
               <Link to={`/channel/${userData.name}`} color="#7f8fa6">
                 <IconWrapper>

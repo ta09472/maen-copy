@@ -6,26 +6,11 @@ import { useSelector } from "react-redux";
 import Cookies from "universal-cookie";
 
 const Test = () => {
-  const cookies = new Cookies();
-  const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleGoogleClick = async () => {};
-  const handleClick = async () => {};
-  const fetchPost = async () => {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts"
-    );
-    console.log(response);
-    console.log("headers", response.headers);
-  };
-  console.log(cookies.get("user"));
+  const src =
+    "https://lh3.googleusercontent.com/a-/AOh14Gi49qx7W7Ft1w48NwZockqQxv65qdtuViEefu_Q=s96-c";
   return (
     <div>
-      <button onClick={fetchPost}>post</button>
-      <button onClick={handleClick}>google</button>
+      <img src={src} />
     </div>
   );
 };

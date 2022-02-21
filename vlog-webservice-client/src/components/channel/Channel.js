@@ -5,17 +5,17 @@ import ChannelContentWrapper from "../styled/channelStyled/ChannelContentWrapper
 import ChannelInfoWrapper from "./ChannelInfoWrapper";
 import Content from "../main/Content";
 import ContentWrapper from "../styled/mainStyled/ContentWrapper";
-import { useParams } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 const Channel = () => {
-  const { userName } = useParams();
-
+  const isMobile = useMediaQuery({
+    query: "(max-width:1024px)",
+  });
   document.body.style.overflow = "auto";
   return (
     <ChannelWrapperStyled>
-      <SideNav />
+      {isMobile ? null : <SideNav />}
       <ContentWrapper>
-        <h2>{userName}</h2>
         <ChannelInfoWrapper />
       </ContentWrapper>
     </ChannelWrapperStyled>

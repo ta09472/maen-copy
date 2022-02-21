@@ -6,6 +6,7 @@ export const FETCH_ERROR = "FETCH_ERROR";
 export const FETCH_POST_POPULAR = "FETCH_POST_POPULAR";
 export const FETCH_POST_DETAIL = "FETCH_POST_DETAIL";
 export const TOGGLE_MODAL = "TOGGLE_MODAL";
+export const DELETE_POST = "DELETE_POST";
 
 export const fetchPost = () => async (dispatch) => {
   const response = await axios.get("api/v1/posts/recent");
@@ -32,6 +33,10 @@ export const fetchDetailPost = (postId) => async (dispatch) => {
   dispatch({ type: FETCH_POST_DETAIL, payload: response.data });
 };
 
+export const deletePost = (postId) => async (dispatch) => {
+  const response = await axios.delete(`api/v1/posts/${postId}`);
+  dispatch({ type: DELETE_POST });
+};
 // reducer
 const initialState = {
   posts: [],
@@ -65,6 +70,10 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         postDetail: action.payload,
+      };
+    case DELETE_POST:
+      return {
+        ...state,
       };
     default:
       return state;
