@@ -18,14 +18,15 @@ import EtcDropDown from "../styled/modalStyled/EtcDropDown";
 import EtcButton from "../styled/modalStyled/EtcButton";
 import EditButtons from "./EditButtons";
 
-const SideContent = ({ isOpened, tags }) => {
+const SideContent = ({ isOpened, tags, src }) => {
   const cookies = new Cookies();
   const [isVisible, setIsVisible] = useState(false);
-
   const postDetail = useSelector((state) => state.post.postDetail);
   const navigate = useNavigate();
   const userCookie = cookies.get("user");
   const postsId = postDetail.postsId;
+  const [picture, setPicture] = useState("");
+
   const tagList = tags.map((tag, index) => (
     <Tag key={index} tag={tag}>
       {tag}
@@ -59,7 +60,7 @@ const SideContent = ({ isOpened, tags }) => {
         {isOpened && (
           <UserBlockStlyed onClick={handleClick}>
             <UserProfileStyled
-              src=""
+              src={src}
               width="32px"
               height="32px"
               data-username={postDetail.authorName}

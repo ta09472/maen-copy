@@ -8,7 +8,7 @@ const CommentList = () => {
   const comments = useSelector((state) => state.comment.comments);
 
   const commentList = comments.map((comment, index) => (
-    <Comment key={index} comment={comment}></Comment>
+    <Comment key={index} comment={comment} />
   ));
 
   return <CommentListWrapper>{commentList}</CommentListWrapper>;

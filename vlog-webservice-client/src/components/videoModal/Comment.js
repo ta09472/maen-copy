@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import UserBlcok from "../common/UserBlock";
 import CommentWrapper from "../styled/modalStyled/CommentWrapper";
 import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
@@ -9,11 +9,15 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Cookies from "universal-cookie";
 import CommentETC from "./CommentETC";
+import { useDispatch } from "react-redux";
+import { getPicture } from "../../redux/module/comment";
 
-const Comment = ({ comment, commentId }) => {
+const Comment = ({ comment }) => {
+  const dispatch = useDispatch();
   const cookies = new Cookies();
   const userCookie = cookies.get("user");
   const [isVisible, setIsVisible] = useState(false);
+  const [picture, setPicture] = useState("");
 
   const handleClick = () => {
     setIsVisible(!isVisible);
@@ -31,7 +35,7 @@ const Comment = ({ comment, commentId }) => {
       <CommentWrapper>
         <UserBlockStlyed>
           <Link to={`/channel/${comment.author}`}>
-            <UserProfileStyled src="" width="32px" height="32px" />
+            <UserProfileStyled src={picture} width="32px" height="32px" />
             {comment.author}
           </Link>
         </UserBlockStlyed>
@@ -39,7 +43,7 @@ const Comment = ({ comment, commentId }) => {
           {comment.contents}
           {buttonRedner()}
         </CommentContent>
-        <CommentETC isVisible={isVisible} />
+        <CommentETC isVisible={isVisible} comment={comment} />
       </CommentWrapper>
     </>
   );

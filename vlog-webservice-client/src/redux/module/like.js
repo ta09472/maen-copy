@@ -1,14 +1,25 @@
 import axios from "axios";
 // actiontype
-const TOGGLE_LIKE = "TOGGLE_LIKE";
+const REQUEST_LIKE = "REQUEST_LIKE";
+const REQUEST_LIKE_CANCEL = "REQUEST_LIKE_CANCEL";
 
 //action
 
-export const toggleLike = (postsId, userId) => (dispatch) => {
-  axios.post("api/v1/post-like", {});
-  dispatch({ type: TOGGLE_LIKE });
+export const requestLike = (postsId, userId) => (dispatch) => {
+  let data = {
+    postsId: postsId,
+    userId: userId,
+  };
+  axios.post("api/v1/post-like", data);
+  dispatch({ type: REQUEST_LIKE });
 };
 
+export const requestLikeCancel = (postsId, userId, accessToken) => (
+  dispatch
+) => {
+  axios.delete(`http://localhost:8080/api/v1/post-like/${postsId}/${userId}`);
+  dispatch({ type: REQUEST_LIKE_CANCEL });
+};
 // initialState
 
 const initialState = {
@@ -17,10 +28,15 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_LIKE:
+    case REQUEST_LIKE:
       return {
         ...state,
-        isLiked: !state.isLiked,
+        isLiked: true,
+      };
+    case REQUEST_LIKE_CANCEL:
+      return {
+        ...state,
+        isLiked: false,
       };
     default:
       return state;

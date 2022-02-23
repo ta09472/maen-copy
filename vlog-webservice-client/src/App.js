@@ -9,7 +9,7 @@ import Recent from "./components/recent/Recent";
 import Upload from "./components/upload/Upload";
 import Error from "./components/common/Error";
 import Loading from "./components/common/Loading";
-
+import Edit from "./components/upload/Edit";
 import { Route, Routes } from "react-router-dom";
 
 import Test from "./Test";
@@ -28,6 +28,7 @@ function App() {
             <Route path="/search" element={<SearchResult />} />
             <Route path="/upload" element={<Upload />} />
             <Route path="/loading" element={<Loading />} />
+            <Route path="/edit" element={<Edit />} />
             <Route path="*" element={<Error />} />
             <Route path="/test" element={<Test />} />
           </Routes>

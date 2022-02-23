@@ -6,13 +6,13 @@ import { useSelector } from "react-redux";
 import Cookies from "universal-cookie";
 
 const Test = () => {
-  const src =
-    "https://lh3.googleusercontent.com/a-/AOh14Gi49qx7W7Ft1w48NwZockqQxv65qdtuViEefu_Q=s96-c";
-  return (
-    <div>
-      <img src={src} />
-    </div>
-  );
+  useEffect(() => {
+    axios
+      .get("api/v1/posts/1/comments")
+
+      .then((response) => console.log(response));
+  });
+  return <div></div>;
 };
 
 export default Test;

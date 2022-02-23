@@ -6,14 +6,17 @@ const FETCH_CHANNEL = "FETCH_CHANNEL";
 
 //action
 
-export const fetchChannel = () => async (dispatch) => {
-  const response = await axios.get("url");
+export const fetchChannel = (userId) => async (dispatch) => {
+  const response = await axios.get(
+    `http://localhost:8080/api/v1/user/${userId}/posts/`
+  );
+  console.log(response);
   dispatch({ type: FETCH_CHANNEL, payload: response.data });
 };
 
 //initialState
 const initialState = {
-  channel_data: {},
+  myPost: [],
 };
 
 //reducer
@@ -23,7 +26,7 @@ export default function reducer(state = initialState, action) {
     case FETCH_CHANNEL:
       return {
         ...state,
-        channel_data: action.payload,
+        myPost: action.payload,
       };
     default:
       return state;

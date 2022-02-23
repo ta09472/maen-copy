@@ -9,7 +9,7 @@ const RecommandationUser = () => {
 
   const userList = userNameList.map((user, index) => (
     <Link to={`/channel/${user}`} key={index}>
-      <UserBlock key={index} userName={user} />
+      <UserBlock key={index} userName={user} src={user} />
     </Link>
   ));
 

@@ -54,7 +54,11 @@ const Post = ({ post }) => {
         />
         <Link to={`/channel/${post.authorName}/`}>
           <UserBlockStlyed>
-            <UserProfileStyled width="32px" height="32px" />
+            <UserProfileStyled
+              width="32px"
+              height="32px"
+              src={`${post.authorPicture}`}
+            />
             <p>{post.authorName}</p>
           </UserBlockStlyed>
         </Link>
@@ -68,6 +72,7 @@ const Post = ({ post }) => {
         onClose={toggleModal}
         videoSrc={post.thumbnailName}
         tags={post.tags}
+        src={post.authorPicture}
       ></VideoModal>
     </>
   );
