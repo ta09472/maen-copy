@@ -18,6 +18,7 @@ export const loginRequest = (path, authCode) => async (dispatch) => {
   });
   cookies.set("user", response.data, { path: "/" });
   cookies.set("isLoggedIn", true, { path: "/" });
+
   dispatch({ type: LOGIN_REQUEST, payload: response.data });
 };
 

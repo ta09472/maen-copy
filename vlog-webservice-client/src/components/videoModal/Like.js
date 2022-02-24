@@ -1,20 +1,26 @@
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import LikeStyled from "../styled/modalStyled/LikeStyled";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
-import { requestLike, requestLikeCancel } from "../../redux/module/like";
+import axios from "axios";
+import {
+  requestLike,
+  requestLikeCancel,
+  fetchLike,
+} from "../../redux/module/like";
 
 const Like = () => {
   const dispatch = useDispatch();
   const { postsId } = useSelector((state) => state.post.postDetail);
-  const [isLiked, setIsLiked] = useState(false);
+  const likeState = useSelector((state) => state.like.isLiked);
+  const [isLiked, setIsLiked] = useState(likeState);
   const cookies = new Cookies();
   const isLoggedIn = cookies.get("isLoggedIn");
   const user = cookies.get("user");
 
-  const handleLike = (e) => {
+  const handleLike = async (e) => {
     if (!isLoggedIn) {
       alert("로그인 후 이용가능 합니다.");
       return false;
@@ -28,17 +34,36 @@ const Like = () => {
     }
   };
 
-  return isLiked ? (
+  const compareLike = async () => {
+    if (isLoggedIn) {
+      const response = await axios.get(`api/v1/user/${user.userId}/like`);
+      if (response.data.userLikePostIds.includes(postsId)) {
+        setIsLiked(true);
+      } else {
+        setIsLiked(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    compareLike();
+  }, [postsId]);
+
+  return (
     <>
-      <LikeStyled>
-        <MdFavorite onClick={handleLike} />
-      </LikeStyled>
-    </>
-  ) : (
-    <>
-      <LikeStyled>
-        <MdFavoriteBorder onClick={handleLike} />
-      </LikeStyled>
+      {isLiked ? (
+        <>
+          <LikeStyled>
+            <MdFavorite onClick={handleLike} />
+          </LikeStyled>
+        </>
+      ) : (
+        <>
+          <LikeStyled>
+            <MdFavoriteBorder onClick={handleLike} />
+          </LikeStyled>
+        </>
+      )}
     </>
   );
 };

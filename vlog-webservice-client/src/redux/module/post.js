@@ -14,15 +14,9 @@ export const fetchPost = () => async (dispatch) => {
   dispatch({ type: FETCH_POST, payload: response.data });
 };
 
-export const fetchPostPopular = () => async (dispatch) => {
-  const response = await axios.get("api/v1/posts/popular");
-  response
-    .then((success) => {
-      dispatch({ type: FETCH_POST_POPULAR, payload: response.data });
-    })
-    .catch((error) => {
-      dispatch({ type: FETCH_ERROR, payload: error });
-    });
+export const fetchPostPopular = (pageNum) => async (dispatch) => {
+  const response = await axios.get(`api/v1/posts/${pageNum}/popular`);
+  dispatch({ type: FETCH_POST_POPULAR, payload: response.data });
 };
 
 export const toggle = (isOpened) => {

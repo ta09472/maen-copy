@@ -35,7 +35,11 @@ const Comment = ({ comment }) => {
       <CommentWrapper>
         <UserBlockStlyed>
           <Link to={`/channel/${comment.author}`}>
-            <UserProfileStyled src={picture} width="32px" height="32px" />
+            <UserProfileStyled
+              src={comment.authorPicture}
+              width="32px"
+              height="32px"
+            />
             {comment.author}
           </Link>
         </UserBlockStlyed>
@@ -43,7 +47,11 @@ const Comment = ({ comment }) => {
           {comment.contents}
           {buttonRedner()}
         </CommentContent>
-        <CommentETC isVisible={isVisible} comment={comment} />
+        <CommentETC
+          isVisible={isVisible}
+          comment={comment}
+          handleClick={handleClick}
+        />
       </CommentWrapper>
     </>
   );

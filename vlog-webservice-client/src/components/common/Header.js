@@ -16,6 +16,7 @@ import { MdAccountCircle, MdLogout } from "react-icons/md";
 import IconWrapper from "../styled/commonStyled/IconWrapper";
 import Cookies from "universal-cookie";
 import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
+
 const Header = () => {
   const cookies = new Cookies();
   const isLoggedIn = cookies.get("isLoggedIn");
@@ -41,9 +42,12 @@ const Header = () => {
         {isLoggedIn ? (
           <div onClick={handleClick}>
             <UserBlock
+              userId={userData.userId}
               userName={userData.name}
               src={cookies.get("user").picture}
-            />
+            >
+              {userData.name}
+            </UserBlock>
             <DropDown visible={isVisible}>
               <Link to={`/channel/${userData.name}`} color="#7f8fa6">
                 <IconWrapper>

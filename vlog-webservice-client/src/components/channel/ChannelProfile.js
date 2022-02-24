@@ -5,9 +5,7 @@ import Cookies from "universal-cookie";
 const ChannelProfile = () => {
   const cookies = new Cookies();
 
-  return (
-    <UserProfileStyled src={cookies.get("user").picture}></UserProfileStyled>
-  );
+  return <UserProfileStyled></UserProfileStyled>;
 };
 
 export default ChannelProfile;

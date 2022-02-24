@@ -70,13 +70,12 @@ const UploadTest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("video", inputs.video);
     formData.append("userId", userData.userId);
     formData.append("tags", inputs.tags);
     formData.append("description", inputs.description);
 
     await axios
-      .post(`/api/v1/posts/${editPost.postsId}`, formData, {
+      .put(`/api/v1/posts/${editPost.postsId}`, formData, {
         headers: {
           encType: "multipart/form-data",
         },
@@ -102,25 +101,6 @@ const UploadTest = () => {
       <UploadWrapper>
         <form onSubmit={handleSubmit}>
           <FormStyled>
-            <PostFormStyled>
-              <h3>Upload Your Days</h3>
-              <UploaderStyled>
-                <label htmlFor="inputFile">
-                  <MdPresentToAll
-                    size="50px"
-                    color={isValid}
-                    cursor="pointer"
-                  />
-                </label>
-                <input
-                  id="inputFile"
-                  type="file"
-                  name="video"
-                  accept=".mp4"
-                  onChange={handleFileChange}
-                />
-              </UploaderStyled>
-            </PostFormStyled>
             <InputWrapper>
               <CaptionInput
                 type="text"
@@ -139,7 +119,7 @@ const UploadTest = () => {
               />
 
               <ButtonWrapper>
-                <UploadButtonStyled>upload</UploadButtonStyled>
+                <UploadButtonStyled>Edit</UploadButtonStyled>
               </ButtonWrapper>
             </InputWrapper>
           </FormStyled>

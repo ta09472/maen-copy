@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deletePost, fetchDetailPost } from "../../redux/module/post";
-import { deleteComment, editComment } from "../../redux/module/comment";
+import {
+  deleteComment,
+  editComment,
+  submitComment,
+} from "../../redux/module/comment";
 
-const EditButtons = ({ target, postsId, comment }) => {
+const EditButtons = ({ target, postsId, comment, handleClick }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
@@ -18,8 +22,11 @@ const EditButtons = ({ target, postsId, comment }) => {
     switch (target) {
       case "post":
         dispatch(deletePost(postsId));
+        window.location.href = "/";
+        return false;
       case "comment":
         dispatch(deleteComment(comment.commentId));
+        handleClick();
     }
   };
 
@@ -30,6 +37,19 @@ const EditButtons = ({ target, postsId, comment }) => {
         navigate("/edit");
       case "comment":
         setIsEditing(!isEditing);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    if (commentInput !== "" && e.key === "Enter") {
+      dispatch(
+        editComment(postsId, comment.authorId, commentInput, comment.commentId)
+      );
+      setCommentInput("");
+      e.target.value = "";
+      handleClick();
+      setIsEditing(false);
+      window.location.href = "/";
     }
   };
 
@@ -62,7 +82,12 @@ const EditButtons = ({ target, postsId, comment }) => {
         </button>
       </div>
       {isEditing && (
-        <input type="text" placeholder="editing..." onChange={handleInput} />
+        <input
+          type="text"
+          placeholder="editing..."
+          onChange={handleInput}
+          onKeyPress={handleSubmit}
+        />
       )}
     </div>
   );

@@ -4,12 +4,16 @@ import { useDispatch } from "react-redux";
 import { deleteComment } from "../../redux/module/comment";
 import EditButtons from "./EditButtons";
 
-const CommentETC = ({ isVisible, userId, comment }) => {
+const CommentETC = ({ isVisible, userId, comment, handleClick }) => {
   const dispatch = useDispatch();
 
   return (
     <EtcDropDown visible={isVisible}>
-      <EditButtons target="comment" comment={comment} />
+      <EditButtons
+        target="comment"
+        comment={comment}
+        handleClick={handleClick}
+      />
     </EtcDropDown>
   );
 };

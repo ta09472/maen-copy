@@ -2,7 +2,7 @@ import axios from "axios";
 // actiontype
 const REQUEST_LIKE = "REQUEST_LIKE";
 const REQUEST_LIKE_CANCEL = "REQUEST_LIKE_CANCEL";
-
+const FETCH_LIKE = "FETCH_LIKE";
 //action
 
 export const requestLike = (postsId, userId) => (dispatch) => {
@@ -10,7 +10,8 @@ export const requestLike = (postsId, userId) => (dispatch) => {
     postsId: postsId,
     userId: userId,
   };
-  axios.post("api/v1/post-like", data);
+  const response = axios.post("api/v1/post-like", data);
+
   dispatch({ type: REQUEST_LIKE });
 };
 
@@ -21,9 +22,19 @@ export const requestLikeCancel = (postsId, userId, accessToken) => (
   dispatch({ type: REQUEST_LIKE_CANCEL });
 };
 // initialState
-
+export const fetchLike = (userId, postsId) => async (dispatch) => {
+  const response = await axios.get(`api/v1/user/${userId}/like`);
+  const isLiked = await response.data.userLikePostIds.includes(postsId);
+  dispatch({
+    type: FETCH_LIKE,
+    payload: response.data.postLikeList,
+    isLiked: isLiked,
+  });
+};
 const initialState = {
   isLiked: false,
+  userLikePostIds: [],
+  commentLikeList: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -37,6 +48,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         isLiked: false,
+      };
+    case FETCH_LIKE:
+      return {
+        ...state,
+        postLikeList: action.paylaod,
+        isLiked: action.isLiked,
       };
     default:
       return state;

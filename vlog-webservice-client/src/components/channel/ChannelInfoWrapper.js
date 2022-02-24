@@ -7,8 +7,10 @@ import ChannelProfile from "./ChannelProfile";
 import ChannelDescription from "../channel/ChannelDescription";
 import Cookies from "universal-cookie";
 import { useParams } from "react-router-dom";
+
 const ChannelInfoWrapper = () => {
   const { userName } = useParams();
+  const cookies = new Cookies();
 
   return (
     <ChannelInfoStyled>
