@@ -16,7 +16,7 @@ import { MdAccountCircle, MdLogout } from "react-icons/md";
 import IconWrapper from "../styled/commonStyled/IconWrapper";
 import Cookies from "universal-cookie";
 import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
-
+import axios from "axios";
 const Header = () => {
   const cookies = new Cookies();
   const isLoggedIn = cookies.get("isLoggedIn");
@@ -49,7 +49,10 @@ const Header = () => {
               {userData.name}
             </UserBlock>
             <DropDown visible={isVisible}>
-              <Link to={`/channel/${userData.name}`} color="#7f8fa6">
+              <Link
+                to={`/channel/${userData.name}/${userData.userId}`}
+                color="#7f8fa6"
+              >
                 <IconWrapper>
                   <MdAccountCircle />
                   Channel

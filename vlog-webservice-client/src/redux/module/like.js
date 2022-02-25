@@ -10,7 +10,7 @@ export const requestLike = (postsId, userId) => (dispatch) => {
     postsId: postsId,
     userId: userId,
   };
-  const response = axios.post("api/v1/post-like", data);
+  const response = axios.post("/api/v1/post-like", data);
 
   dispatch({ type: REQUEST_LIKE });
 };
@@ -23,7 +23,7 @@ export const requestLikeCancel = (postsId, userId, accessToken) => (
 };
 // initialState
 export const fetchLike = (userId, postsId) => async (dispatch) => {
-  const response = await axios.get(`api/v1/user/${userId}/like`);
+  const response = await axios.get(`/api/v1/user/${userId}/like`);
   const isLiked = await response.data.userLikePostIds.includes(postsId);
   dispatch({
     type: FETCH_LIKE,

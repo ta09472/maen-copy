@@ -49,7 +49,6 @@ const EditButtons = ({ target, postsId, comment, handleClick }) => {
       e.target.value = "";
       handleClick();
       setIsEditing(false);
-      window.location.href = "/";
     }
   };
 

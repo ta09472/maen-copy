@@ -45,7 +45,7 @@ const SideContent = ({ isOpened, tags, src }) => {
     if (!userCookie) {
       return null;
     }
-    if (userCookie.name === postDetail.authorName) {
+    if (userCookie.userId === postDetail.authorName) {
       return <EtcButton onClick={handleEtcClick}>...</EtcButton>;
     }
   };
@@ -58,15 +58,9 @@ const SideContent = ({ isOpened, tags, src }) => {
         }}
       >
         {isOpened && (
-          <UserBlockStlyed onClick={handleClick}>
-            <UserProfileStyled
-              src={src}
-              width="32px"
-              height="32px"
-              data-username={postDetail.authorName}
-            />
-            <p>{postDetail.authorName}</p>
-          </UserBlockStlyed>
+          <Link to={`/channel/${postDetail.authorName}/${postDetail.authorId}`}>
+            <UserBlock src={src} userName={postDetail.authorName} />
+          </Link>
         )}
         {buttonRedner()}
       </div>

@@ -34,7 +34,7 @@ const Comment = ({ comment }) => {
     <>
       <CommentWrapper>
         <UserBlockStlyed>
-          <Link to={`/channel/${comment.author}`}>
+          <Link to={`/channel/${comment.author}/${comment.authorId}`}>
             <UserProfileStyled
               src={comment.authorPicture}
               width="32px"

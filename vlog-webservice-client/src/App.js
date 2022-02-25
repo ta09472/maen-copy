@@ -22,7 +22,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="channel/:userName" element={<Channel />} />
+            <Route path="channel/:userName/:userId" element={<Channel />} />
             <Route path="/upload" element={<Upload />} />
             <Route path="/recent" element={<Recent />} />
             <Route path="/search" element={<SearchResult />} />

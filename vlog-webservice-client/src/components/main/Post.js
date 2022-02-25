@@ -53,7 +53,7 @@ const Post = ({ post }) => {
           height="80%"
           src={`http://localhost:8080/api/v1/posts/thumbnail/${post.thumbnailName}`}
         />
-        <Link to={`/channel/${post.authorName}/`}>
+        <Link to={`/channel/${post.authorName}/${post.authorId}`}>
           <UserBlock src={post.authorPicture} userName={post.authorName} />
         </Link>
         <MdFavorite /> :{post.postsLike}

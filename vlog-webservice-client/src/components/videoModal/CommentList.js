@@ -3,7 +3,7 @@ import CommentListWrapper from "../styled/modalStyled/CommentListWrapper";
 import Comment from "./Comment";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchComments } from "../../redux/module/comment";
-
+import axios from "axios";
 const CommentList = () => {
   const comments = useSelector((state) => state.comment.comments);
 
