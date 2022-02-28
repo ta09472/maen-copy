@@ -7,7 +7,10 @@ const FETCH_RECOMMEND_TAGS = "FETCH_RECOMMEND_TAGS";
 // action
 
 export const fetchRecommendUsers = () => async (dispatch) => {
-  const response = await axios.get(`api/v1/recommend/user`);
+  const response = await axios.get(
+    `http://localhost:8080/api/v1/recommend/user`
+  );
+  console.log(response);
   dispatch({ type: FETCH_RECOMMEND_USERS, payload: response.data });
 };
 
