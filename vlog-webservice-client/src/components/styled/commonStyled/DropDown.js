@@ -12,7 +12,7 @@ const DropDown = styled.div`
   border-radius: 4px;
   margin-top: 4px;
   padding: 8px;
-  height: 4em;
+  height: 6em;
   width: 6em;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 `;

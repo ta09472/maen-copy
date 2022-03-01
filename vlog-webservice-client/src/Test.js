@@ -1,18 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
-import { useSelector } from "react-redux";
 import Cookies from "universal-cookie";
-
 const Test = () => {
-  useEffect(() => {
-    axios
-      .get("api/v1/posts/1/comments")
-
-      .then((response) => console.log(response));
-  });
-  return <div></div>;
+  const cookies = new Cookies();
+  const accessToken = cookies.get("user").accessToken;
+  const refreshToken = cookies.get("user").refreshToken;
+  const user = cookies.get("user");
+  const authorization = "Authorization";
+  console.log(user);
+  console.log(accessToken);
+  console.log(refreshToken);
+  const handleClick = async () => {
+    const response = await axios.get("/api/v1/jwt/refresh", {
+      body: {
+        refreshToken: refreshToken,
+      },
+    });
+    console.log(response);
+  };
+  return (
+    <>
+      <input type="text" placeholder="..." />
+      <button onClick={handleClick}>click</button>
+    </>
+  );
 };
 
 export default Test;

@@ -10,6 +10,7 @@ import Upload from "./components/upload/Upload";
 import Error from "./components/common/Error";
 import Loading from "./components/common/Loading";
 import Edit from "./components/upload/Edit";
+import Setting from "./components/common/Setting";
 import { Route, Routes } from "react-router-dom";
 
 import Test from "./Test";
@@ -30,6 +31,7 @@ function App() {
             <Route path="/loading" element={<Loading />} />
             <Route path="/edit" element={<Edit />} />
             <Route path="*" element={<Error />} />
+            <Route path="/setting" element={<Setting />} />
             <Route path="/test" element={<Test />} />
           </Routes>
         </GlobalWrapper>

@@ -13,10 +13,12 @@ import DropDown from "../styled/commonStyled/DropDown";
 import { logoutRequset } from "../../redux/module/login";
 import { useNavigate } from "react-router-dom";
 import { MdAccountCircle, MdLogout } from "react-icons/md";
+import { BsGear } from "react-icons/bs";
 import IconWrapper from "../styled/commonStyled/IconWrapper";
 import Cookies from "universal-cookie";
 import UserProfileStyled from "../styled/commonStyled/UserProfileStyled";
 import axios from "axios";
+import Setting from "./Setting";
 const Header = () => {
   const cookies = new Cookies();
   const isLoggedIn = cookies.get("isLoggedIn");
@@ -29,8 +31,11 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logoutRequset());
-    window.location.reload();
+    dispatch(logoutRequset(cookies.get("user").userId));
+    window.location.href = "/";
+    setTimeout(() => {
+      window.location.reload();
+    });
   };
 
   return (
@@ -56,6 +61,12 @@ const Header = () => {
                 <IconWrapper>
                   <MdAccountCircle />
                   Channel
+                </IconWrapper>
+              </Link>
+              <Link to={`/setting`}>
+                <IconWrapper>
+                  <BsGear />
+                  Setting
                 </IconWrapper>
               </Link>
               <Logout onClick={handleLogout}>

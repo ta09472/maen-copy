@@ -8,6 +8,7 @@ const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 const GET_CODE = "GET_CODE";
 const SEND_CODE = "SEND_CODE";
 const GET_PATH = "GET_PATH";
+const DELETE_USER = "DELETE_USER";
 // action
 
 export const loginRequest = (path, authCode) => async (dispatch) => {
@@ -22,12 +23,18 @@ export const loginRequest = (path, authCode) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST, payload: response.data });
 };
 
-export const logoutRequset = () => async (dispatch) => {
+export const logoutRequset = (userId) => async (dispatch) => {
   cookies.remove("isLoggedIn");
   cookies.remove("user");
   dispatch({ type: LOGOUT_REQUEST });
 };
 
+export const deleteUser = (userId) => async (dispatch) => {
+  const response = await axios.delete(`api/v1/user/${userId}`);
+  cookies.remove("isLoggedIn");
+  cookies.remove("user");
+  dispatch({ type: DELETE_USER });
+};
 export const getCode = (code) => (dispatch) => {
   dispatch({ type: GET_CODE, payload: code });
 };
@@ -68,6 +75,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         path: action.payload,
+      };
+    case DELETE_USER:
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: {},
       };
     default:
       return state;
