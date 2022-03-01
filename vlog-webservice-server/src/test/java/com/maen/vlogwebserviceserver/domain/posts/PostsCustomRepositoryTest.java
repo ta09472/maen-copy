@@ -1,6 +1,7 @@
 package com.maen.vlogwebserviceserver.domain.posts;
 
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,10 @@ public class PostsCustomRepositoryTest {
     @Autowired
     private TagsRepository tagsRepository;
 
+    @AfterEach
+    public void cleanup() {
+        postsRepository.deleteAll();
+    }
 
 
     @Test
@@ -54,7 +59,7 @@ public class PostsCustomRepositoryTest {
 
 
         //when
-        List<Posts> postsLists = postsRepository.findAllByTag(tag,null, "recent");
+        List<Posts> postsLists = postsRepository.findListByTagSearch(tag,null, "recent");
 
         //then
         assertThat(postsLists.size()).isEqualTo(6);
