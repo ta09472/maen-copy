@@ -5,9 +5,9 @@ import com.maen.vlogwebserviceserver.domain.posts.Posts;
 import java.util.List;
 
 public interface PostsCustomRepository {
-
-    List<Posts> findAllInMainPage(Long lastPostId, String orderType);
-    List<Posts> findAllByTag(String tag, Long lastPostId, String orderType);
-
-
+    List<Posts> findRecentListInMainPage(Long lastPostsId);
+    List<Posts> findRecentListByTagSearch(String tag, Long lastPostsId);
+    List<Posts> findPopularListInMainPage(Integer pageNumber);
+    List<Posts> findPopularListByTagSearch(String tag, Integer pageNumber);
+    List<Posts> findListByUserId(Long userId, Long lastPostId);
 }

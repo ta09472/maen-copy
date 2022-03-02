@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
+import expireToken from "../../utils/expireToken";
 const cookies = new Cookies();
 //actiontype
 
@@ -30,7 +31,13 @@ export const logoutRequset = (userId) => async (dispatch) => {
 };
 
 export const deleteUser = (userId) => async (dispatch) => {
-  const response = await axios.delete(`api/v1/user/${userId}`);
+  expireToken();
+  const response = await axios.delete(`api/v2/user/${userId}`, {
+    headers: {
+      ACCESS_TOKEN: cookies.get("user").accessToken,
+    },
+  });
+
   cookies.remove("isLoggedIn");
   cookies.remove("user");
   dispatch({ type: DELETE_USER });

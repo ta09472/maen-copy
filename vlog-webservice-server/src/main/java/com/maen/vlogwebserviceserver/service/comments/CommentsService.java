@@ -1,8 +1,10 @@
 package com.maen.vlogwebserviceserver.service.comments;
 
 import com.maen.vlogwebserviceserver.domain.comments.Comments;
+import com.maen.vlogwebserviceserver.domain.comments.CommentsLike;
 import com.maen.vlogwebserviceserver.domain.comments.CommentsLikeRepository;
 import com.maen.vlogwebserviceserver.domain.comments.CommentsRepository;
+import com.maen.vlogwebserviceserver.domain.user.User;
 import com.maen.vlogwebserviceserver.domain.user.UserRepository;
 import com.maen.vlogwebserviceserver.web.dto.CommentsAllResponseDto;
 import com.maen.vlogwebserviceserver.web.dto.CommentsSaveRequestDto;
@@ -32,10 +34,13 @@ public class CommentsService {
         List<Comments> commentsList = commentsRepository.findAllInPostsDetail(postsId, commentsId);
         List<CommentsAllResponseDto> responseDtoList = new ArrayList<>();
         for(Comments comments : commentsList) {
-            String author = userRepository.getById(comments.getUserId()).getName();
+            User author = userRepository.findById(comments.getUserId()).orElseThrow(()-> new IllegalArgumentException("없는 사용자 입니다. id="+comments.getUserId()));
             int commentLike = commentsLikeRepository.countByCommentsId(comments.getId());
             responseDtoList.add(CommentsAllResponseDto.builder()
-                    .author(author)
+                    .commentId(comments.getId())
+                    .authorId(author.getId())
+                    .author(author.getName())
+                    .authorPicture(author.getPicture())
                     .commentsLike(commentLike)
                     .contents(comments.getContent())
                     .build());
@@ -53,6 +58,24 @@ public class CommentsService {
     @Transactional
     public void delete(Long id) {
         Comments comments = commentsRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("해당 댓글이 없습니다. id="+id));
+        List<CommentsLike> commentsLikeList = commentsLikeRepository.findAllByCommentsId(id);
+        commentsLikeRepository.deleteAll(commentsLikeList);
         commentsRepository.delete(comments);
+    }
+
+    @Transactional
+    public void deleteByPostsId(Long postsId) {
+        List<Comments> commentsList = commentsRepository.findAllByPostsId(postsId);
+        for(Comments comments : commentsList) {
+            delete(comments.getId());
+        }
+    }
+
+    public void deleteByUserId(Long userId) {
+        List<Comments> commentsList = commentsRepository.findAllByUserId(userId);
+        for(Comments comments : commentsList) {
+            delete(comments.getId());
+        }
+
     }
 }

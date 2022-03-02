@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import expireToken from "./utils/expireToken";
 import axios from "axios";
 import Cookies from "universal-cookie";
 const Test = () => {
@@ -7,17 +7,16 @@ const Test = () => {
   const accessToken = cookies.get("user").accessToken;
   const refreshToken = cookies.get("user").refreshToken;
   const user = cookies.get("user");
-  const authorization = "Authorization";
+
   console.log(user);
-  console.log(accessToken);
-  console.log(refreshToken);
+  const config = {
+    headers: {
+      ACCESS_TOKEN: accessToken,
+    },
+  };
+
   const handleClick = async () => {
-    const response = await axios.get("/api/v1/jwt/refresh", {
-      body: {
-        refreshToken: refreshToken,
-      },
-    });
-    console.log(response);
+    expireToken();
   };
   return (
     <>
