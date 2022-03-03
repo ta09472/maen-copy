@@ -1,15 +1,24 @@
 import axios from "axios";
+import expireToken from "../../utils/expireToken";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 // actiontype
 const SET_FOLLOW = "SET_FOLLOW";
 const GET_FOLLOWING = "GET_FOLLOWING";
 const SET_UNFOLLOW = "SET_UNFOLLOW";
 // action
+
 export const setFollow = (userId, targetId) => async (dispatch) => {
   let data = {
     userId: userId,
     followTargetId: targetId,
   };
-  const response = await axios.post(`/api/v1/follows`, data);
+  expireToken();
+  const response = await axios.post(`/api/v2/follows`, data, {
+    headers: {
+      ACCESS_TOKEN: cookies.get("user").accessToken,
+    },
+  });
   dispatch({ type: SET_FOLLOW });
 };
 
@@ -23,7 +32,12 @@ export const getFollowing = (userId) => async (dispatch) => {
 };
 
 export const setUnfollow = (userId, targetId) => async (dispatch) => {
-  const response = await axios.delete(`/api/v1/follows/${userId}/${targetId}`);
+  expireToken();
+  const response = await axios.delete(`/api/v2/follows/${userId}/${targetId}`, {
+    headers: {
+      ACCESS_TOKEN: cookies.get("user").accessToken,
+    },
+  });
 };
 const initialState = {
   isFollow: false,

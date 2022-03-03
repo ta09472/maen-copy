@@ -12,7 +12,7 @@ export const setInput = (input) => async (dispatch) => {
 
 export const getSearch = (keyword) => async (dispatch) => {
   if (keyword.length !== 0) {
-    const response = await axios.get(`api/v1/posts/${keyword}/search/recent`);
+    const response = await axios.get(`/api/v1/posts/${keyword}/search/recent`);
     if (response.data.length !== 0) {
       dispatch({
         type: GET_SEARCH,
@@ -27,7 +27,7 @@ export const getSearch = (keyword) => async (dispatch) => {
 
 export const getUserSearch = (keyword, pageNumber) => async (dispatch) => {
   if (keyword.length !== 0) {
-    const response = await axios.get(`api/v1/user/search/${keyword}/0`);
+    const response = await axios.get(`/api/v1/user/search/${keyword}/0`);
     if (response.data.length !== 0) {
       dispatch({
         type: GET_USER_SEARCH,

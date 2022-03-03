@@ -37,7 +37,7 @@ const SearchResult = () => {
     dispatch(getUserSearch(keyword));
 
     document.body.style.overflow = "auto";
-  }, []);
+  }, [keyword]);
 
   return (
     <HomeWrapper>

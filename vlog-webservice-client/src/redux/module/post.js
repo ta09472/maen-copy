@@ -1,4 +1,7 @@
 import axios from "axios";
+import expireToken from "../../utils/expireToken";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 // actiontypes
 
 export const FETCH_POST = "FETCH_POST";
@@ -29,8 +32,14 @@ export const fetchDetailPost = (postId) => async (dispatch) => {
 };
 
 export const deletePost = (postId) => async (dispatch) => {
+  expireToken();
   const response = await axios.delete(
-    `http://localhost:8080/api/v1/posts/${postId}`
+    `http://localhost:8080/api/v2/posts/${postId}`,
+    {
+      headers: {
+        ACCESS_TOKEN: cookies.get("user").accessToken,
+      },
+    }
   );
   dispatch({ type: DELETE_POST });
 };

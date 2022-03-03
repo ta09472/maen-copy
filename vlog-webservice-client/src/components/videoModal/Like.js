@@ -36,7 +36,7 @@ const Like = () => {
 
   const compareLike = async () => {
     if (isLoggedIn) {
-      const response = await axios.get(`api/v1/user/${user.userId}/like`);
+      const response = await axios.get(`/api/v1/user/${user.userId}/like`);
       if (response.data.userLikePostIds.includes(postsId)) {
         setIsLiked(true);
       } else {

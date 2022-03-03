@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { useSelector } from "react-redux";
+import expireToken from "../../utils/expireToken";
 
 toast.configure();
 
@@ -73,11 +74,12 @@ const UploadTest = () => {
     formData.append("userId", userData.userId);
     formData.append("tags", inputs.tags);
     formData.append("description", inputs.description);
-
+    await expireToken();
     await axios
-      .post("http://localhost:8080/api/v1/posts/", formData, {
+      .post("http://localhost:8080/api/v2/posts/", formData, {
         headers: {
           encType: "multipart/form-data",
+          ACCESS_TOKEN: cookies.get("user").accessToken,
         },
       })
       .then((res) => {

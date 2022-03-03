@@ -1,4 +1,7 @@
 import axios from "axios";
+import expireToken from "../../utils/expireToken";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 // actiontypes;
 const FETCH_COMMENTS = "FETCH_COMMENTS";
 const SUBMIT_COMMENT = "SUBMIT_COMMENT";
@@ -15,12 +18,18 @@ export const fetchComments = (post_id) => async (dispatch) => {
 
 export const submitComment = (postsId, userId, input) => async (dispatch) => {
   const data = { postsId: postsId, userId: userId, content: input };
+  expireToken();
   const response = await axios.post(
-    "http://localhost:8080/api/v1/comments",
-    data
+    "http://localhost:8080/api/v2/comments",
+    data,
+    {
+      headers: {
+        ACCESS_TOKEN: cookies.get("user").accessToken,
+      },
+    }
   );
   let lastComment = await axios.get(
-    `api/v1/posts/${postsId}/comments/${response.data + 1}`
+    `/api/v1/posts/${postsId}/comments/${response.data + 1}`
   );
   dispatch({ type: SUBMIT_COMMENT, payload: lastComment.data[0] });
 };
@@ -29,14 +38,25 @@ export const editComment = (postsId, userId, input, commentId) => async (
   dispatch
 ) => {
   const data = { postsId: postsId, userId: userId, content: input };
-  const response = await axios.put(`api/v1/comments/${commentId}`, data);
+  expireToken();
+  const response = await axios.put(`api/v2/comments/${commentId}`, data, {
+    headers: {
+      ACCESS_TOKEN: cookies.get("user").accessToken,
+    },
+  });
 
   dispatch({ type: EDIT_COMMENT, payload: input, target: commentId });
 };
 
 export const deleteComment = (commentId) => async (dispatch) => {
+  expireToken();
   const response = await axios.delete(
-    `http://localhost:8080/api/v1/comments/${commentId}`
+    `http://localhost:8080/api/v2/comments/${commentId}`,
+    {
+      headers: {
+        ACCESS_TOKEN: cookies.get("user").accessToken,
+      },
+    }
   );
   dispatch({ type: DELETE_COMMENT, payload: response.data });
 };

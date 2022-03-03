@@ -20,7 +20,7 @@ const RecommandationTag = () => {
     setRecommendTags(response.data);
   }, []);
   const handleClick = async (e) => {
-    const tag = e.target.dataset.tag;
+    const tag = e.target.dataset.tag.slice(1);
 
     dispatch(setInput(tag));
     navigate("/search");

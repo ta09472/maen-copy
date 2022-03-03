@@ -11,10 +11,6 @@ const SearchUser = () => {
   const keyword = useSelector((state) => state.search.input);
   const userNameList = useSelector((state) => state.search.userResults);
 
-  useEffect(async () => {
-    await dispatch(getUserSearch(keyword));
-  }, [keyword]);
-
   const userList = userNameList.map((user, index) => (
     <Link to={`/channel/${user.name}/${user.userId}`} key={index}>
       <UserBlock userName={user.name} src={user.picture} />
