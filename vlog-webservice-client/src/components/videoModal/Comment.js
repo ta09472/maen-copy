@@ -26,7 +26,7 @@ const Comment = ({ comment }) => {
     if (!userCookie) {
       return null;
     }
-    if (userCookie.name === comment.author) {
+    if (userCookie.userId === comment.authorId) {
       return <EtcButton onClick={handleClick}>...</EtcButton>;
     }
   };

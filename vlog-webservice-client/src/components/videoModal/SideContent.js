@@ -45,7 +45,7 @@ const SideContent = ({ isOpened, tags, src }) => {
     if (!userCookie) {
       return null;
     }
-    if (userCookie.name === postDetail.authorName) {
+    if (userCookie.userId === postDetail.authorId) {
       return <EtcButton onClick={handleEtcClick}>...</EtcButton>;
     }
   };
