@@ -6,7 +6,7 @@ const PostStyled = styled.div`
   height: 19em;
   margin: 1em;
   transition: transform 700ms;
-
+  overflow: hidden;
   &:hover {
     transition: 500ms;
     transform: translateY(-5px);

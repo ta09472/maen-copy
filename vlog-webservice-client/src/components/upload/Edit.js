@@ -28,13 +28,13 @@ const UploadTest = () => {
   const navigate = useNavigate();
   const userData = cookies.get("user");
   const editPost = useSelector((state) => state.post.postDetail);
-
   const handleChange = (e) => {
     if (e.keyCode == 32) {
       setTag("");
     }
     setTag(e.target.value);
   };
+
   const handleKeyDown = (e) => {
     if (e.keyCode == 32) {
       setTagList([...tagList, tag]);
