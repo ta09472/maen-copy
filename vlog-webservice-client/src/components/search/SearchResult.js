@@ -44,7 +44,7 @@ const SearchResult = () => {
       {isMobile ? null : <SideNav />}
       <SearchResultWrapper>
         {isPostEmpty ? (
-          <p>"{keyword}"에 대한 검색결과가 없습니다.</p>
+          <p>"{keyword}"에 대한 게시물 검색결과가 없습니다.</p>
         ) : (
           <>
             <p>"{keyword}"에 대한 검색결과입니다.</p>
