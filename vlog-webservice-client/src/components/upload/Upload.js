@@ -74,7 +74,7 @@ const UploadTest = () => {
     formData.append("userId", userData.userId);
     formData.append("tags", inputs.tags);
     formData.append("description", inputs.description);
-    await expireToken();
+    expireToken();
     await axios
       .post("http://localhost:8080/api/v2/posts/", formData, {
         headers: {

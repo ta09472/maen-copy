@@ -16,7 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { useSelector } from "react-redux";
-
+import expireToken from "../../utils/expireToken";
 toast.configure();
 
 const UploadTest = () => {
@@ -73,11 +73,12 @@ const UploadTest = () => {
     formData.append("userId", userData.userId);
     formData.append("tags", inputs.tags);
     formData.append("description", inputs.description);
-
+    expireToken();
     await axios
-      .put(`/api/v1/posts/${editPost.postsId}`, formData, {
+      .put(`/api/v2/posts/${editPost.postsId}`, formData, {
         headers: {
           encType: "multipart/form-data",
+          ACCESS_TOKEN: cookies.get("user").accessToken,
         },
       })
       .then((res) => {
