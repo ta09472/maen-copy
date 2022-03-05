@@ -1,5 +1,7 @@
 # MAEN - vlog 전용 플랫폼
 
+스트리밍 기반의 Vlog 플랫폼
+
 ## UseCase
 
 - 회원가입/로그인
@@ -32,6 +34,12 @@
 
 ~ : 호스팅 및 배포
 
+## 개발 인원
+
+프론트엔드 개발자 1명(https://www.notion.so/62a2b6c9b3dd461ab8d3f99a5134ad15)
+
+백엔드 개발자 1명
+
 ## 기술 스택
 
 ### 프론트엔드
@@ -61,3 +69,7 @@
 - Slack, Notion
 - Git
 - Bash, Atom, InteiliJ, Vim
+
+## 개발 진행 상황 및 이슈
+
+[개발 진행 상황 및 이슈](https://www.notion.so/596a5a6c535f4d7b87fa47b0458b55f9?v=5582c67d1d9b4f28a75fb3238b27b83d)
