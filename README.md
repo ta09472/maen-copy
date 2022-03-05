@@ -26,7 +26,7 @@
 
 [DB 설계](https://swamp-output-6ff.notion.site/DB-d9dcd8b25bed44c483df4a3ff9f12ca5)
 
-[Vlog API_ver2](https://www.notion.so/7a9453583f094d7c9799d953b3374ca6)
+[Vlog API_ver2](https://swamp-output-6ff.notion.site/7a9453583f094d7c9799d953b3374ca6?v=fa27c50b6c904408b2cf640a50665f87)
 
 ~ 22/02/21 : 개발
 
@@ -38,7 +38,7 @@
 
 ## 개발 인원
 
-[프론트엔드 개발자 1명](https://www.notion.so/62a2b6c9b3dd461ab8d3f99a5134ad15)
+[프론트엔드 개발자 1명](https://swamp-output-6ff.notion.site/62a2b6c9b3dd461ab8d3f99a5134ad15)
 
 백엔드 개발자 1명
 
