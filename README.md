@@ -1,20 +1,21 @@
-# MAEN - vlog 전용 플랫폼
+# MAEN
 
 스트리밍 기반의 Vlog 플랫폼
 
 ## UseCase
 
-- 회원가입/로그인
-- CRUD 기능 제공
-- 댓글 / 좋아요 기능 제공
-- 최신 / 인기 순으로 정결 가능
-- 타인의 게시물 열람 가능
-- 사용자별 개인 채널을 가질 수 있다.
-- 시간대별(morning-afternoon-evening-night)로 구분 가능하다.
-- 동영상을 태그 및 검색어로 검색 가능하다.
-- SPA
-- 시청기록 히스토리기록
-- 팔로우 기능
+- 회원가입/로그인 O
+- CRUD 기능 제공 O
+- 댓글 / 좋아요 기능 제공 O
+- 최신 / 인기 순으로 정결 가능 O
+- 타인의 게시물 열람 가능 O
+- 게시글 무한 스크롤 기능 O
+- 사용자별 개인 채널을 가질 수 있다. O
+- 시간대별(morning-afternoon-evening-night)로 구분 가능하다. X
+- 동영상을 태그 및 검색어로 검색 가능하다. O
+- SPA O
+- 시청기록 히스토리기록 X
+- 팔로우 기능 O
 
 ## 개발 일정
 
@@ -50,16 +51,18 @@
 - Styling : Styled-component
 - State Management : Redux
 - HTTP Client : Axios
-- Asyncronous Communication with Server : Redux-Thunk
 - Route : React-Router-Dom
+- 기타 라이브러리: Redux-thunk, Intersection-Observer등등
 
 ##### 추가로 공부하여 적용해 볼 것들
 
-++ TypeScript for low error
+++ TypeScript : 정적타입
 
-++ Testing Library for Code Testing
+++ React-query : 비동기 로직 처리
 
-++ StoryBook for separate with business logic from UI
+++ Recoil : 상태관리
+
+++ StoryBook : UI와 로직의 분리
 
 ### 백엔드
 
