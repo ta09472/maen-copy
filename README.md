@@ -16,6 +16,7 @@
 - SPA O
 - 시청기록 히스토리기록 X
 - 팔로우 기능 O
+- 반응형 웹 O
 
 ## 개발 일정
 
@@ -23,7 +24,7 @@
 
 21/12/19 ~ 21/12/20 : 설계, DB, API 설계
 
-[DB 설계](https://www.notion.so/DB-d9dcd8b25bed44c483df4a3ff9f12ca5)
+[DB 설계](https://swamp-output-6ff.notion.site/DB-d9dcd8b25bed44c483df4a3ff9f12ca5)
 
 [Vlog API_ver2](https://www.notion.so/7a9453583f094d7c9799d953b3374ca6)
 
@@ -80,4 +81,4 @@
 
 ## 개발 진행 상황 및 이슈
 
-[개발 진행 상황 및 이슈](https://www.notion.so/596a5a6c535f4d7b87fa47b0458b55f9?v=5582c67d1d9b4f28a75fb3238b27b83d)
+[개발 진행 상황 및 이슈](https://swamp-output-6ff.notion.site/596a5a6c535f4d7b87fa47b0458b55f9?v=5582c67d1d9b4f28a75fb3238b27b83d)
