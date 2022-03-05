@@ -66,6 +66,11 @@
 
 ### 백엔드
 
+- OS : Windows
+- Language : Java
+- FrameWork : Springboot
+- Jnuit5
+
 ### DevOps
 
 - AWS-EC2, AWS-S3, AWS-RDS
