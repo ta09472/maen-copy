@@ -29,12 +29,20 @@ public class PostsApiController {
        return postsService.save(postsSaveRequestDto);
     }
     // posts 수정 multipart/form-data
+<<<<<<< HEAD
     @PutMapping("api/v2/posts/{postsId}")
+=======
+    @PutMapping("api/v1/posts/{postsId}")
+>>>>>>> b96d18dc8c0869d7ae652eb26b73f552c3ffe3a7
     public Long update(@PathVariable Long postsId, @ModelAttribute PostsUpdateRequestDto updateRequestDto) throws JCodecException, IOException {
         return postsService.update(postsId, updateRequestDto);
     }
     // posts 삭제
+<<<<<<< HEAD
     @DeleteMapping("api/v2/posts/{postsId}")
+=======
+    @DeleteMapping("api/v1/posts/{postsId}")
+>>>>>>> b96d18dc8c0869d7ae652eb26b73f552c3ffe3a7
     public Long delete(@PathVariable Long postsId) {
         return postsService.delete(postsId);
     }

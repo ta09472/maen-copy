@@ -25,18 +25,30 @@ public class UserApiController {
         return userService.findById(userId);
     }
     // 회원 탈퇴
+<<<<<<< HEAD
     @DeleteMapping("/api/v2/user/{userId}")
+=======
+    @DeleteMapping("/api/v1/user/{userId}")
+>>>>>>> b96d18dc8c0869d7ae652eb26b73f552c3ffe3a7
     public Long deleteUser(@PathVariable Long userId) {
         return userService.deleteUser(userId);
     }
 
     // 팔로우 신청
+<<<<<<< HEAD
     @PostMapping("/api/v2/follows")
+=======
+    @PostMapping("/api/v1/follows")
+>>>>>>> b96d18dc8c0869d7ae652eb26b73f552c3ffe3a7
     public Long saveFollow(@RequestBody FollowsSaveRequestDto requestDto) {
         return followsService.saveFollow(requestDto);
     }
     // 팔로우 해제
+<<<<<<< HEAD
     @DeleteMapping("/api/v2/follows/{userId}/{followTargetId}")
+=======
+    @DeleteMapping("/api/v1/follows/{userId}/{followTargetId}")
+>>>>>>> b96d18dc8c0869d7ae652eb26b73f552c3ffe3a7
     public void deleteFollow(@PathVariable Long userId, @PathVariable Long followTargetId) {
         followsService.deleteFollow(userId, followTargetId);
     }

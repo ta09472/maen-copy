@@ -12,9 +12,13 @@ public class WebConfig implements WebMvcConfigurer {
         corsRegistry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000")
                 .allowedHeaders("*")
+<<<<<<< HEAD
                 .allowedMethods("*")
                 .exposedHeaders("ACCESS_TOKEN")
                 .exposedHeaders("REFRESH_TOKEN");
+=======
+                .allowedMethods("*");
+>>>>>>> b96d18dc8c0869d7ae652eb26b73f552c3ffe3a7
     }
 
 }
