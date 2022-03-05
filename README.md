@@ -36,7 +36,7 @@
 
 ## 개발 인원
 
-프론트엔드 개발자 1명(https://www.notion.so/62a2b6c9b3dd461ab8d3f99a5134ad15)
+[프론트엔드 개발자 1명](https://www.notion.so/62a2b6c9b3dd461ab8d3f99a5134ad15)
 
 백엔드 개발자 1명
 
