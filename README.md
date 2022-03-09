@@ -1,7 +1,7 @@
 # MAEN
 
 스트리밍 기반의 Vlog 플랫폼
-
+[데모 ](https://youtu.be/o9bm47qKAbQ)
 ## UseCase
 
 - 회원가입/로그인 O
